@@ -63,6 +63,10 @@ public class riwayatfragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("My Appoitment");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_riwayatfragment, container, false);
     }

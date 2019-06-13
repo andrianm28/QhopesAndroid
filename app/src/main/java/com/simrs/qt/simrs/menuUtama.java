@@ -7,16 +7,21 @@ import android.support.v4.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+
+import java.util.ArrayList;
 
 
 /**
@@ -34,7 +39,8 @@ public class menuUtama extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private TextView mTextMessage;
     CarouselView carouselView;
-    ImageButton btn_day,btn_week,btn_news,btn_spesialis,btn_daftar,btn_info;
+    ImageButton btn_week,btn_news,btn_spesialis,btn_daftar,btn_info;
+    Button btn_day;
 
 
     int[] sampleImages = {R.drawable.jp1, R.drawable.jp2, R.drawable.jp3, R.drawable.jp4};
@@ -85,13 +91,17 @@ public class menuUtama extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_menu_utama, container, false);
         mTextMessage = (TextView) rootView.findViewById(R.id.message);
+        centerTitle();
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Home");
 
 
         carouselView = rootView.findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
 
-        btn_day = (ImageButton) rootView.findViewById(R.id.btn_today);
+        btn_day = (Button) rootView.findViewById(R.id.btn_today);
         btn_day_click();
         btn_week = (ImageButton) rootView.findViewById(R.id.btn_weeks);
         btn_week_click();
@@ -104,10 +114,34 @@ public class menuUtama extends Fragment {
         btn_info = (ImageButton) rootView.findViewById(R.id.btn_info);
         btn_info_click();
 
-
-
-
         return rootView;
+    }
+
+    private void centerTitle() {
+        ArrayList<View> textViews = new ArrayList<>();
+
+        getActivity().getWindow().getDecorView().findViewsWithText(textViews, getActivity().getTitle(), View.FIND_VIEWS_WITH_TEXT);
+
+        if(textViews.size() > 0) {
+            AppCompatTextView appCompatTextView = null;
+            if(textViews.size() == 1) {
+                appCompatTextView = (AppCompatTextView) textViews.get(0);
+            } else {
+                for(View v : textViews) {
+                    if(v.getParent() instanceof Toolbar) {
+                        appCompatTextView = (AppCompatTextView) v;
+                        break;
+                    }
+                }
+            }
+
+            if(appCompatTextView != null) {
+                ViewGroup.LayoutParams params = appCompatTextView.getLayoutParams();
+                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                appCompatTextView.setLayoutParams(params);
+                appCompatTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            }
+        }
     }
 
     public void btn_day_click(){

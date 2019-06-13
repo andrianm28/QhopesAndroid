@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_main);
-        centerTitle();
-        getSupportActionBar().setTitle("Home");
+//        centerTitle();
+//        getSupportActionBar().setTitle("Home");
         fab=(FloatingActionButton) findViewById(R.id.fab);
         fabOnclick();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -99,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar, menu);
         return true;
+    }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
     private void centerTitle() {
         ArrayList<View> textViews = new ArrayList<>();

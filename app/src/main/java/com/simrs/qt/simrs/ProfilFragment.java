@@ -82,6 +82,11 @@ public class ProfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.fragment_profil, container, false);
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Profile");
+
         lv=(ListView)rootView.findViewById(R.id.listprofil);
         titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
        titleprofil.setText("Nomor Rekam Medis");

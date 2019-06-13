@@ -64,6 +64,9 @@ public class BookmarkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Diagnosis");
         return inflater.inflate(R.layout.fragment_bookmark, container, false);
     }
 
