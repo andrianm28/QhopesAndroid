@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".menuUtama">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/title_home"
+        />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+
+            android:paddingBottom="70dp"
+
+            >
+
+
+            <LinearLayout
+                android:id="@+id/ln4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp">
+
+                <LinearLayout
+                    android:id="@+id/ln1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:gravity="left|center_horizontal"
+
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_today"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_calendar"
+                            android:text="Today"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.12"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.323" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_today"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="Today"></TextView>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/btn_weeks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_calendar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.823"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.145" />" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_weeks"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="Week"></TextView>
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+
+
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_news"
+                            android:layout_width="wrap_content"
+                            android:layout_height="56dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_calendar"
+                            android:text="Today"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.12"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.323" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_news"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="News"></TextView>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        >
+
+                        <ImageButton
+                            android:id="@+id/btn_spesialis"
+                            android:layout_width="54dp"
+                            android:layout_height="49dp"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginTop="3dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_bedah_orthopedi"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.823"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.145" />" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_spesialis"
+                            android:layout_gravity="center"
+
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="Spesialis"></TextView>
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/btn_daftar"
+                            android:layout_width="57dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="3dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+
+                            android:src="@mipmap/ic_health"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.823"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.32" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_daftar"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="Daftar"></TextView>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        >
+
+                        <ImageButton
+                            android:id="@+id/btn_info"
+                            android:layout_width="58dp"
+                            android:layout_height="47dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="#ffffff"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/ic_dokter"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.823"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.32" />
+
+                        <TextView
+                            android:layout_width="61dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/btn_info"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="35dp"
+                            android:clickable="false"
+                            android:text="Info"></TextView>
+                    </FrameLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>
