@@ -6,7 +6,11 @@
     tools:context=".activity.MainActivity">
 
     <item
-        android:id="@+id/action_sign_out"
-        android:title="oke"
+        android:id="@+id/action_bantuan"
+        android:title="Bantuan"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_bagikan"
+        android:title="Bagikan"
         app:showAsAction="never"/>
 </menu>

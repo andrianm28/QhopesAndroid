@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">QHopes</string>
     <string name="title_home">Home</string>
-    <string name="title_riwayat">Riwayat</string>
+    <string name="title_myappoitment">My Appoitment</string>
     <string name="title_dashboard"></string>
-    <string name="title_bookmark">Bookmark</string>
-    <string name="title_akun">Akun</string>
+    <string name="title_diagnosis">Diagnosis</string>
+    <string name="title_profile">Profile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">under development..</string>

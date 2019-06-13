@@ -60,9 +60,13 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="172dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="80dp">
+                android:layout_marginTop="80dp"
+                android:orientation="horizontal">
+
+
+                <!-- TODO: Mockup decor unfinished -->
 
                 <LinearLayout
                     android:id="@+id/ln1"
@@ -142,9 +146,9 @@
                     android:id="@+id/ln2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
 
 
                     android:gravity="center"
@@ -266,8 +270,8 @@
                             android:id="@+id/btn_info"
                             android:layout_width="58dp"
                             android:layout_height="47dp"
-                            android:layout_marginTop="6dp"
                             android:layout_marginLeft="4dp"
+                            android:layout_marginTop="6dp"
                             android:background="#ffffff"
                             android:scaleType="fitCenter"
                             android:src="@mipmap/ic_dokter"
