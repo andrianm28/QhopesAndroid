@@ -66,8 +66,8 @@ public class BookmarkFragment extends Fragment {
         // Inflate the layout for this fragment
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Diagnosis");
-        return inflater.inflate(R.layout.fragment_bookmark, container, false);
+                .setActionBarTitle(getString(R.string.title_diagnosis));
+        return inflater.inflate(R.layout.fragment_nav_diagnosis, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

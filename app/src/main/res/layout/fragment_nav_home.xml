@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragmentNav">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:id="@+id/ln4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
+
+            </LinearLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"
+                app:alignItems="center"
+                app:alignContent="space_around"
+                >
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_hari_ini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_hari_ini"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_hari_ini"
+                        />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_minggu_ini"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_minggu_ini"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_minggu_ini"
+                        />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp">
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_berita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_berita"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_berita"
+                        />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_spesialis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_spesialis"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_spesialis"
+                        />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_info"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_info"
+                        />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <ImageButton
+                        android:id="@+id/idbtn_menu_kontak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/ic_menu_kontak"
+                        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:layout_marginTop="32dp"
+                        android:textSize="12sp"
+                        android:text="@string/tbtn_menu_kontak"
+                        />
+
+                </FrameLayout>
+                <!--<FrameLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/btn_daftar"-->
+                        <!--android:layout_width="57dp"-->
+                        <!--android:layout_height="48dp"-->
+                        <!--android:layout_marginTop="3dp"-->
+                        <!--android:background="#ffffff"-->
+                        <!--android:scaleType="fitCenter"-->
+
+                        <!--android:src="@mipmap/ic_health"-->
+                        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--app:layout_constraintEnd_toEndOf="parent"-->
+                        <!--app:layout_constraintHorizontal_bias="0.823"-->
+                        <!--app:layout_constraintStart_toStartOf="parent"-->
+                        <!--app:layout_constraintTop_toTopOf="parent"-->
+                        <!--app:layout_constraintVertical_bias="0.32" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="61dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_below="@+id/btn_daftar"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_marginLeft="6dp"-->
+                        <!--android:layout_marginTop="35dp"-->
+                        <!--android:clickable="false"-->
+                        <!--android:text="Daftar"></TextView>-->
+                <!--</FrameLayout>-->
+
+                <!--<FrameLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+
+                    <!--&gt;-->
+
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/idbtn_menu_info"-->
+                        <!--android:layout_width="58dp"-->
+                        <!--android:layout_height="47dp"-->
+                        <!--android:layout_marginLeft="4dp"-->
+                        <!--android:layout_marginTop="6dp"-->
+                        <!--android:background="#ffffff"-->
+                        <!--android:scaleType="fitCenter"-->
+                        <!--android:src="@mipmap/ic_dokter"-->
+                        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--app:layout_constraintEnd_toEndOf="parent"-->
+                        <!--app:layout_constraintHorizontal_bias="0.823"-->
+                        <!--app:layout_constraintStart_toStartOf="parent"-->
+                        <!--app:layout_constraintTop_toTopOf="parent"-->
+                        <!--app:layout_constraintVertical_bias="0.32" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="61dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_marginStart="14dp"-->
+                        <!--android:layout_marginTop="35dp"-->
+                        <!--android:clickable="false"-->
+                        <!--android:text="Info" />-->
+                <!--</FrameLayout>-->
+            </com.google.android.flexbox.FlexboxLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">QHopes</string>
-    <string name="title_home">Home</string>
-    <string name="title_myappoitment">My Appoitment</string>
-    <string name="title_dashboard"></string>
+    <string name="title_beranda">Home</string>
+    <string name="title_myappointment">My Appointment</string>
+    <string name="title_pendaftaran"></string>
     <string name="title_diagnosis">Diagnosis</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_profil">Profile</string>
+    <string name="title_menu_hariini">Jadwal hari ini</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">under development..</string>
+    <string name="tbtn_menu_hari_ini">Hari ini</string>
+    <string name="tbtn_menu_minggu_ini">Minggu ini</string>
+    <string name="tbtn_menu_berita">Berita</string>
+    <string name="tbtn_menu_spesialis">Spesialis</string>
+    <string name="tbtn_menu_info">Info</string>
+    <string name="tbtn_menu_kontak">Kontak</string>
 </resources>

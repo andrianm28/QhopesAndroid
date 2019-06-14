@@ -3,24 +3,25 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@mipmap/ic_button_nav_beranda"
+        android:title="@string/title_beranda" />
     <item
         android:id="@+id/navigation_riwayat"
-        android:icon="@drawable/ic_myappoitment"
-        android:title="@string/title_myappoitment" />
+        android:icon="@mipmap/ic_button_nav_riwayat"
+        android:title="@string/title_myappointment" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_pendaftaran"
+        android:title="@string/title_pendaftaran"
+        />
 
     <item
         android:id="@+id/navigation_bookmark"
-        android:icon="@drawable/ic_diagnose"
+        android:icon="@mipmap/ic_button_nav_diagnosis"
         android:title="@string/title_diagnosis" />
     <item
         android:id="@+id/navigation_akun"
-        android:icon="@drawable/ic_profile"
-        android:title="@string/title_profile" />
+        android:icon="@mipmap/ic_button_nav_profil"
+        android:title="@string/title_profil" />
 
 </menu>

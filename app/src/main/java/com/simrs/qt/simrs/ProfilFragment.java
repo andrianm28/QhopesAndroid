@@ -1,7 +1,6 @@
 package com.simrs.qt.simrs;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -81,11 +80,11 @@ public class ProfilFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView =inflater.inflate(R.layout.fragment_profil, container, false);
+        View rootView =inflater.inflate(R.layout.fragment_nav_profil, container, false);
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Profile");
+                .setActionBarTitle(getString(R.string.title_profil));
 
         lv=(ListView)rootView.findViewById(R.id.listprofil);
         titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
@@ -116,13 +115,13 @@ public class ProfilFragment extends Fragment {
                 String filennorekmedfrominfo =  (String) dataModel.getno_med_rec()+"";
                 Snackbar.make(view, dataModel.getName()+"\n"+" No Rekam Medis : "+filennorekmedfrominfo, Snackbar.LENGTH_LONG)
                        .setAction("No action", null).show();
-           //     Intent intent = new Intent(getActivity(),pendaftaranFragment.class);
+           //     Intent intent = new Intent(getActivity(),PendaftaranFragmentNav.class);
            //     Bundle bundle = new Bundle();
              //   bundle.putString("datainfonorekmed", filennorekmedfrominfo);
              //   intent.putExtras(bundle);
 //                startActivity(intent);
 
-                 pendaftaranFragment fm = new pendaftaranFragment();
+                 PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
 
 
 

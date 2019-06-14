@@ -53,7 +53,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_gravity="right"
                 android:text="Daftar"
-                android:id="@+id/btn_infoTodaftar"
+                android:id="@+id/idbtn_menu_infoTodaftar"
                 />
 
         </RelativeLayout>

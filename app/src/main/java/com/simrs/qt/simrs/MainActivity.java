@@ -6,23 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.support.v7.widget.Toolbar;
-
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
 import java.util.ArrayList;
 
@@ -40,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                  //   mTextMessage.setText(R.string.title_home);
-                    menuUtama fm1 =  new menuUtama();
+                    HomeFragmentNav fm1 =  new HomeFragmentNav();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.frameLayout,fm1 );
                     fragmentTransaction1.commit();
@@ -53,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return  true;
 
-                case R.id.navigation_dashboard:
+                case R.id.navigation_pendaftaran:
 
                     return true;
                 case R.id.navigation_bookmark:
@@ -88,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-         menuUtama fm =  new menuUtama();
+         HomeFragmentNav fm =  new HomeFragmentNav();
 
            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
            fragmentTransaction.replace(R.id.frameLayout,fm );
@@ -174,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pendaftaranFragment fm =  new pendaftaranFragment();
+                PendaftaranFragmentNav fm =  new PendaftaranFragmentNav();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout,fm );
                 fragmentTransaction.commit();

@@ -66,9 +66,9 @@ public class riwayatfragment extends Fragment {
 
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("My Appoitment");
+                .setActionBarTitle(getString(R.string.title_myappointment));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_riwayatfragment, container, false);
+        return inflater.inflate(R.layout.fragment_nav_myappointment, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

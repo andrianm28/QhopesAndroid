@@ -22,12 +22,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link viewinfotoday.OnFragmentInteractionListener} interface
+ * {@link MenuHariIniFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link viewinfotoday#newInstance} factory method to
+ * Use the {@link MenuHariIniFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class viewinfotoday extends Fragment {
+public class MenuHariIniFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,7 +43,7 @@ public class viewinfotoday extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public viewinfotoday() {
+    public MenuHariIniFragment() {
         // Required empty public constructor
     }
 
@@ -53,11 +53,11 @@ public class viewinfotoday extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment viewinfotoday.
+     * @return A new instance of fragment MenuHariIniFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static viewinfotoday newInstance(String param1, String param2) {
-        viewinfotoday fragment = new viewinfotoday();
+    public static MenuHariIniFragment newInstance(String param1, String param2) {
+        MenuHariIniFragment fragment = new MenuHariIniFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -79,9 +79,10 @@ public class viewinfotoday extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
         View rootView =inflater.inflate(R.layout.fragment_viewinfotoday, container, false);
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle(getString(R.string.title_menu_hariini));
         lv=(ListView)rootView.findViewById(R.id.listday);
         titletodayinfo = (TextView) rootView.findViewById(R.id.titledayinfo);
         titletodayinfo.setText("Jadwal Hari Ini");

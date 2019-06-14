@@ -4,16 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,20 +23,19 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link menuUtama.OnFragmentInteractionListener} interface
+ * {@link HomeFragmentNav.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link menuUtama#newInstance} factory method to
+ * Use the {@link HomeFragmentNav#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class menuUtama extends Fragment {
+public class HomeFragmentNav extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private TextView mTextMessage;
     CarouselView carouselView;
-    ImageButton btn_week,btn_news,btn_spesialis,btn_daftar,btn_info;
-    Button btn_day;
+    ImageButton btn_week,idbtn_menu_berita,idbtn_menu_spesialis,btn_daftar,idbtn_menu_info,btn_day;
 
 
     int[] sampleImages = {R.drawable.jp1, R.drawable.jp2, R.drawable.jp3, R.drawable.jp4};
@@ -53,7 +48,7 @@ public class menuUtama extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public menuUtama() {
+    public HomeFragmentNav() {
         // Required empty public constructor
 
     }
@@ -64,11 +59,11 @@ public class menuUtama extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment menuUtama.
+     * @return A new instance of fragment HomeFragmentNav.
      */
     // TODO: Rename and change types and number of parameters
-    public static menuUtama newInstance(String param1, String param2) {
-        menuUtama fragment = new menuUtama();
+    public static HomeFragmentNav newInstance(String param1, String param2) {
+        HomeFragmentNav fragment = new HomeFragmentNav();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -89,30 +84,30 @@ public class menuUtama extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_menu_utama, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_nav_home, container, false);
         mTextMessage = (TextView) rootView.findViewById(R.id.message);
         centerTitle();
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle("Home");
+                .setActionBarTitle(getString(R.string.title_beranda));
 
 
         carouselView = rootView.findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
 
-        btn_day = (Button) rootView.findViewById(R.id.btn_today);
+        btn_day = (ImageButton) rootView.findViewById(R.id.idbtn_menu_hari_ini);
         btn_day_click();
-        btn_week = (ImageButton) rootView.findViewById(R.id.btn_weeks);
+        btn_week = (ImageButton) rootView.findViewById(R.id.idbtn_menu_minggu_ini);
         btn_week_click();
-        btn_news = (ImageButton) rootView.findViewById(R.id.btn_news);
-        btn_news_click();
-        btn_spesialis = (ImageButton) rootView.findViewById(R.id.btn_spesialis);
-        btn_spesialis_click();
-        btn_daftar = (ImageButton) rootView.findViewById(R.id.btn_daftar);
-        btn_daftar_click();
-        btn_info = (ImageButton) rootView.findViewById(R.id.btn_info);
-        btn_info_click();
+        idbtn_menu_berita = (ImageButton) rootView.findViewById(R.id.idbtn_menu_berita);
+        idbtn_menu_berita_click();
+        idbtn_menu_spesialis = (ImageButton) rootView.findViewById(R.id.idbtn_menu_spesialis);
+        idbtn_menu_spesialis_click();
+//        btn_daftar = (ImageButton) rootView.findViewById(R.id.btn_daftar);
+//        btn_daftar_click();
+        idbtn_menu_info = (ImageButton) rootView.findViewById(R.id.idbtn_menu_info);
+        idbtn_menu_info_click();
 
         return rootView;
     }
@@ -151,7 +146,7 @@ public class menuUtama extends Fragment {
                 //   Intent i=new Intent(getApplicationContext(), viewinfoday.class);//target = nama class
                 //     startActivity(i);
 
-                   viewinfotoday fm =  new viewinfotoday();
+                   MenuHariIniFragment fm =  new MenuHariIniFragment();
 
 
                  FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -179,9 +174,9 @@ public class menuUtama extends Fragment {
         });
     }
 
-    public void btn_news_click()
+    public void idbtn_menu_berita_click()
     {
-        btn_news.setOnClickListener(new View.OnClickListener() {
+        idbtn_menu_berita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NewsFragment fm =  new NewsFragment();
@@ -194,9 +189,9 @@ public class menuUtama extends Fragment {
         });
     }
 
-    public void btn_spesialis_click()
+    public void idbtn_menu_spesialis_click()
     {
-        btn_spesialis.setOnClickListener(new View.OnClickListener() {
+        idbtn_menu_spesialis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -215,7 +210,7 @@ public class menuUtama extends Fragment {
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pendaftaranFragment fm = new pendaftaranFragment();
+                PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
 
 
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -226,9 +221,9 @@ public class menuUtama extends Fragment {
     }
 
 
-    public void btn_info_click()
+    public void idbtn_menu_info_click()
     {
-        btn_info.setOnClickListener(new View.OnClickListener() {
+        idbtn_menu_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 infoFragment fm = new infoFragment();
