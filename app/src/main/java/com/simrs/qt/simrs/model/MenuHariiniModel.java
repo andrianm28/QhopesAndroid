@@ -2,32 +2,25 @@ package com.simrs.qt.simrs.model;
 
 public class MenuHariiniModel {
 
-    String nama_poliklinik,nama_dokter,jam_praktek;
-    int jumlah_pasien, jumlah_terlayani, kuota_pasien;
-    boolean check_in;
+    String nama_poliklinik, nama_dokter, jam_praktek, jumlah_pasien, jumlah_terlayani, kuota_pasien, check_in;
 
-//    String spesialis;
-//    String jam;
-    String feature;
 
     public MenuHariiniModel(
-            String nama_dokter,
             String nama_poliklinik,
+            String nama_dokter,
             String jam_praktek,
-            String feature
-//            int jumlah_pasien,
-//            int jumlah_terlayani,
-//            int kuota_pasien,
-//            boolean check_in
+            String jumlah_pasien,
+            String jumlah_terlayani,
+            String kuota_pasien,
+            String check_in
             ) {
         this.nama_poliklinik = nama_poliklinik;
         this.nama_dokter = nama_dokter;
         this.jam_praktek = jam_praktek;
-//        this.feature = feature;
-//        this.jumlah_pasien = jumlah_pasien;
-//        this.jumlah_terlayani = jumlah_terlayani;
-//        this.kuota_pasien = kuota_pasien;
-//        this.check_in = check_in;
+        this.jumlah_pasien = jumlah_pasien;
+        this.jumlah_terlayani = jumlah_terlayani;
+        this.kuota_pasien = kuota_pasien;
+        this.check_in = check_in;
     }
 
     public String getNama_poliklinik() {
@@ -54,27 +47,35 @@ public class MenuHariiniModel {
         this.jam_praktek = jam_praktek;
     }
 
-    public int getJumlah_pasien() {
+    public String getJumlah_pasien() {
         return jumlah_pasien;
     }
 
-    public void setJumlah_pasien(int jumlah_pasien) {
+    public void setJumlah_pasien(String jumlah_pasien) {
         this.jumlah_pasien = jumlah_pasien;
     }
 
-    public int getJumlah_terlayani() {
+    public String getJumlah_terlayani() {
         return jumlah_terlayani;
     }
 
-    public void setJumlah_terlayani(int jumlah_terlayani) {
+    public void setJumlah_terlayani(String jumlah_terlayani) {
         this.jumlah_terlayani = jumlah_terlayani;
     }
 
-    public int getKuota_pasien() {
+    public String getKuota_pasien() {
         return kuota_pasien;
     }
 
-    public void setKuota_pasien(int kuota_pasien) {
+    public void setKuota_pasien(String kuota_pasien) {
         this.kuota_pasien = kuota_pasien;
+    }
+
+    public String getCheck_in() {
+        return check_in;
+    }
+
+    public void setCheck_in(String check_in) {
+        this.check_in = check_in;
     }
 }

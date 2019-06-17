@@ -47,18 +47,17 @@
                     android:layout_below="@id/tv_nama_dokter"
                     android:text="Jumlah Pasien"
                     />
-
                 <TextView
                     android:id="@+id/tv_jumlah_terlayani"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nama_dokter"
                     android:layout_toEndOf="@id/tv_jumlah_pasien"
-                    android:layout_marginStart="10dp"
-                    android:text="Jumlah Pasien"
+                    android:text="Jumlah Terlayani"
                     />
 
                 <TextView
+                    android:id="@+id/tv_jam_praktek"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
@@ -66,8 +65,6 @@
                     android:textColor="@android:color/black"
                     android:text="Jam Praktek"
                     />
-
-
 
             </RelativeLayout>
 

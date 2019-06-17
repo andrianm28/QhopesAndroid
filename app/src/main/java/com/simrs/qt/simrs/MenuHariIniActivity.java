@@ -3,7 +3,9 @@ package com.simrs.qt.simrs;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,20 +24,37 @@ import com.simrs.qt.simrs.adapters.MenuHariiniAdapter;
 import com.simrs.qt.simrs.adapters.MenuHariiniAdapter2;
 import com.simrs.qt.simrs.model.MenuHariiniModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class MenuHariIniActivity extends AppCompatActivity {
 
     // Member variables.
     private RecyclerView mRecyclerView;
     private ArrayList<MenuHariiniModel> mMenuHariinisData = new ArrayList<MenuHariiniModel>();
     private MenuHariiniAdapter2 mAdapter;
+    private TextView tvCurrentDateTime;
+    Locale id = new Locale("in", "ID");
+    String pattern = "EEEE, dd MMM yyyy - hh:mm";
+    Date today = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat(pattern, id);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_hariini);
+
+        tvCurrentDateTime = (TextView) findViewById(R.id.tv_curent_update_menu_hariini);
+        tvCurrentDateTime.setText("Pembaharuan: "+sdf.format(today));
 
         // Initialize the RecyclerView.
         mRecyclerView = findViewById(R.id.recycler_menu_hariini);
@@ -108,12 +127,10 @@ public class MenuHariIniActivity extends AppCompatActivity {
      */
     private void initializeData(){
 
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. A", "Gigi", "07:00","September 23, 2008"));
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. B", "Polianak", "08:00","February 9, 2009"));
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. C", "SP 3", "09:00","April 27, 2009"));
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. D", "Sp 4", "10:00","October 26, 2009"));
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. E", "sp 5", "11:00","May 20, 2010"));
-        mMenuHariinisData.add(new MenuHariiniModel("Dr. F", "sp 6", "12:00","December 6, 2010"));
+        mMenuHariinisData.add(new MenuHariiniModel("Fisiotherapy","Widodo Amd. Fis","07:30","4","3","0","0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Internist","Bambang Eko Wahyono, dr.Sp. PD","08:00","1","0","0","45"));
+        mMenuHariinisData.add(new MenuHariiniModel("Anak","Taufiqur Rahman,dr. Spa","08:00","28","28","0","0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Syaraf","Dhimas Hantoko, dr.Sp.S","08:00","49","40","0","1"));
         mAdapter = new MenuHariiniAdapter2(mRecyclerView.getContext(), mMenuHariinisData);
 
         // Notify the adapter of the change.

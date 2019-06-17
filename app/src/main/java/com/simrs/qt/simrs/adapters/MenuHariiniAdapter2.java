@@ -3,7 +3,9 @@ package com.simrs.qt.simrs.adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,10 @@ import com.simrs.qt.simrs.R;
 import com.simrs.qt.simrs.SplashscreenActivity;
 import com.simrs.qt.simrs.model.MenuHariiniModel;
 
+import junit.framework.TestResult;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -99,6 +105,11 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
         // Member Variables for the TextViews
         private TextView mNamaDokter;
         private TextView mNamaPoliklinik;
+        private TextView mJamPraktek;
+        private TextView mJumlahPasien;
+        private TextView mCheckin;
+        private TextView mJumlahTerlayani;
+
 
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
@@ -111,6 +122,10 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
             // Initialize the views.
             mNamaDokter = itemView.findViewById(R.id.tv_nama_dokter);
             mNamaPoliklinik = itemView.findViewById(R.id.tv_nama_poliklink);
+            mJamPraktek = itemView.findViewById(R.id.tv_jam_praktek);
+            mJumlahPasien = itemView.findViewById(R.id.tv_jumlah_pasien);
+//            mCheckin = itemView.findViewById(R.id.)
+            mJumlahTerlayani= itemView.findViewById(R.id.tv_jumlah_terlayani);
 
             // Set the OnClickListener to the entire view.
             itemView.setOnClickListener(this);
@@ -120,6 +135,9 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
             // Populate the textviews with data.
             mNamaDokter.setText(currentModel.getNama_dokter());
             mNamaPoliklinik.setText(currentModel.getNama_poliklinik());
+            mJamPraktek.setText(currentModel.getJam_praktek());
+            mJumlahPasien.setText(currentModel.getJumlah_pasien()+" pasien, ");
+            mJumlahTerlayani.setText(currentModel.getJumlah_terlayani()+" terlayani");
 
             // Load the images into the ImageView using the Glide library.
 //            Glide.with(mContext).load(
@@ -131,9 +149,11 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
          *
          * @param view View that is clicked.
          */
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onClick(View view) {
             MenuHariiniModel currentModel = mMenuHariiniModel.get(getAdapterPosition());
+
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
             alertDialog.setTitle(currentModel.getNama_poliklinik());
