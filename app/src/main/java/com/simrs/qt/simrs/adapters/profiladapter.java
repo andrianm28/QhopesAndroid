@@ -3,12 +3,10 @@ package com.simrs.qt.simrs.adapters;
 
 
 import android.content.Context;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.simrs.qt.simrs.R;
@@ -30,7 +28,7 @@ public class profiladapter extends ArrayAdapter<profilpasienmodel> implements Vi
     }
 
     public profiladapter(ArrayList<profilpasienmodel>data, Context context) {
-        super(context, R.layout.day_datarow, data);
+        super(context, R.layout.view_datarow_menu_hariini, data);
         this.dataSet = data;
         this.mContext=context;
 

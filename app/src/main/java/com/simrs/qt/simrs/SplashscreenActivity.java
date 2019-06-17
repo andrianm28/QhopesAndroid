@@ -3,7 +3,6 @@ package com.simrs.qt.simrs;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-public class splashscreen extends AppCompatActivity {
+public class SplashscreenActivity extends AppCompatActivity {
     private int waktu_loading=1000;
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
@@ -36,7 +35,7 @@ public class splashscreen extends AppCompatActivity {
     }
 
     private void Dialog(){
-        dialog = new AlertDialog.Builder(splashscreen.this);
+        dialog = new AlertDialog.Builder(SplashscreenActivity.this);
         inflater = getLayoutInflater();
         dialogView = inflater.inflate(R.layout.dialog_splashscreen,null);
         dialog.setView(dialogView);
@@ -53,7 +52,7 @@ public class splashscreen extends AppCompatActivity {
         dialog.setNegativeButton("PASIEN", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent pilih =new Intent(splashscreen.this, MainActivity.class);
+                Intent pilih =new Intent(SplashscreenActivity.this, MainActivity.class);
                 startActivity(pilih);
                 finish();
             }
@@ -64,9 +63,9 @@ public class splashscreen extends AppCompatActivity {
     protected void showInputDialog() {
 
         // get prompts.xml view
-        LayoutInflater layoutInflater = LayoutInflater.from(splashscreen.this);
+        LayoutInflater layoutInflater = LayoutInflater.from(SplashscreenActivity.this);
         View promptView = layoutInflater.inflate(R.layout.prompt_pilih, null);
-        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(splashscreen.this);
+        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(SplashscreenActivity.this);
         alertDialogBuilder.setView(promptView);
 
         final EditText editText = (EditText) promptView.findViewById(R.id.txtInDokterNip);
@@ -76,7 +75,7 @@ public class splashscreen extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         //    resultText.setText("Hello, " + editText.getText());
                         showMessage("Hello ","NIP = "+editText.getText()   );
-                        Intent pilih =new Intent(splashscreen.this, MainActivity.class);
+                        Intent pilih =new Intent(SplashscreenActivity.this, MainActivity.class);
                         startActivity(pilih);
                         finish();
                     }

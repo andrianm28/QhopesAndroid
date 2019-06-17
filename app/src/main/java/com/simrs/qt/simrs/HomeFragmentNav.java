@@ -1,6 +1,8 @@
 package com.simrs.qt.simrs;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -146,12 +148,15 @@ public class HomeFragmentNav extends Fragment {
                 //   Intent i=new Intent(getApplicationContext(), viewinfoday.class);//target = nama class
                 //     startActivity(i);
 
-                   MenuHariIniFragment fm =  new MenuHariIniFragment();
+                   MenuHariIniActivity fm =  new MenuHariIniActivity();
+
+                Intent intent = new Intent(getActivity(), MenuHariIniActivity.class);
+                startActivity(intent);
 
 
-                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                      fragmentTransaction.replace(R.id.frameLayout,fm);
-                   fragmentTransaction.commit();
+//                 FragmentTransaction fragmentTransaction = getActivity().beginTransaction();
+//                      fragmentTransaction.replace(R.id.frameLayout,fm);
+//                   fragmentTransaction.commit();
 
             }
         });

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".splashscreen"
+        <activity android:name=".SplashscreenActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +19,9 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".MenuHariIniActivity">
         </activity>
     </application>
 

@@ -38,7 +38,7 @@ public class ProfilFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ArrayList<profilpasienmodel> dm;
+    ArrayList<profilpasienmodel> mMenuHariinisData;
     ListView lv;
     private static profiladapter adapter;
     TextView titleprofil;
@@ -89,15 +89,15 @@ public class ProfilFragment extends Fragment {
         lv=(ListView)rootView.findViewById(R.id.listprofil);
         titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
        titleprofil.setText("Nomor Rekam Medis");
-        dm= new ArrayList<>();
+        mMenuHariinisData= new ArrayList<>();
 
-        dm.add(new profilpasienmodel("Pasien 1", "112233"));
-        dm.add(new profilpasienmodel("Pasien 2", "223344"));
-        dm.add(new profilpasienmodel("Pasien 3", "441231"));
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 1", "112233"));
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 2", "223344"));
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 3", "441231"));
 
 
 
-        adapter= new profiladapter(dm,rootView.getContext());
+        adapter= new profiladapter(mMenuHariinisData,rootView.getContext());
 
         lv.setAdapter(adapter);
 
@@ -111,7 +111,7 @@ public class ProfilFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                profilpasienmodel dataModel= dm.get(position);
+                profilpasienmodel dataModel= mMenuHariinisData.get(position);
                 String filennorekmedfrominfo =  (String) dataModel.getno_med_rec()+"";
                 Snackbar.make(view, dataModel.getName()+"\n"+" No Rekam Medis : "+filennorekmedfrominfo, Snackbar.LENGTH_LONG)
                        .setAction("No action", null).show();
