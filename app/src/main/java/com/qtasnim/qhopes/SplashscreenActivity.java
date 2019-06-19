@@ -1,103 +1,108 @@
-package com.simrs.qt.simrs;
+package com.qtasnim.qhopes;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class SplashscreenActivity extends AppCompatActivity {
-    private int waktu_loading=1000;
-    AlertDialog.Builder dialog;
-    LayoutInflater inflater;
-    View dialogView;
+    private int waktuLoading = 1000;
+    AlertDialog.Builder mDialog;
+    Dialog dialog;
+    LayoutInflater mInflaterDialog;
+    View mViewDialog;
+    Button btnPasien,btnDokter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // buat fullscreen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
         getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Dialog();
+                DialogPilihan();
             }
-        }, waktu_loading);
-
+        }, waktuLoading);
     }
-
-    private void Dialog(){
-        dialog = new AlertDialog.Builder(SplashscreenActivity.this);
-        inflater = getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.dialog_splashscreen,null);
-        dialog.setView(dialogView);
-        dialog.setCancelable(true);
-        dialog.setIcon(R.mipmap.ic_launcher);
-        dialog.setTitle("Masuk Sebagai:");
-
-        dialog.setPositiveButton("DOKTER", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                showInputDialog();
+    private void DialogPilihan(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.view_dialog_splashscreen);
+        btnPasien = dialog.findViewById(R.id.btn_pasien);
+        btnDokter = dialog.findViewById(R.id.btn_dokter);
+        btnPasien.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                Intent toMainActivity = new Intent(SplashscreenActivity.this, MainActivity.class);
+                startActivity(toMainActivity);
+                finish();
             }
         });
-        dialog.setNegativeButton("PASIEN", new DialogInterface.OnClickListener() {
+        btnDokter.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                DokterDialog();
+            }
+        });
+        dialog.setCancelable(true);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent pilih =new Intent(SplashscreenActivity.this, MainActivity.class);
-                startActivity(pilih);
+            public void onCancel(DialogInterface dialog) {
                 finish();
             }
         });
         dialog.show();
-
     }
-    protected void showInputDialog() {
 
-        // get prompts.xml view
+    private void DokterDialog(){
         LayoutInflater layoutInflater = LayoutInflater.from(SplashscreenActivity.this);
-        View promptView = layoutInflater.inflate(R.layout.prompt_pilih, null);
+        View promptView = layoutInflater.inflate(R.layout.view_dialog_dokter_splashscreen, null);
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(SplashscreenActivity.this);
         alertDialogBuilder.setView(promptView);
-
         final EditText editText = (EditText) promptView.findViewById(R.id.txtInDokterNip);
-        // setup a dialog window
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //    resultText.setText("Hello, " + editText.getText());
                         showMessage("Hello ","NIP = "+editText.getText()   );
-                        Intent pilih =new Intent(SplashscreenActivity.this, MainActivity.class);
-                        startActivity(pilih);
-                        finish();
                     }
                 })
                 .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Dialog();
+                                DialogPilihan();
                             }
                         });
-
-        // create an alert dialog
         android.app.AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
+
     public void showMessage(String title,String message)
     {
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setMessage(message);
+        builder.setPositiveButton("masuk", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent pilih =new Intent(SplashscreenActivity.this, MainActivity.class);
+                startActivity(pilih);
+                finish();
+            }
+        });
         builder.show();
 
     }
-
 }

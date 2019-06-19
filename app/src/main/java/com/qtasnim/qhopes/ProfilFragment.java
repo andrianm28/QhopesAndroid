@@ -1,23 +1,33 @@
-package com.simrs.qt.simrs;
+package com.qtasnim.qhopes;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.qtasnim.qhopes.adapters.ProfilAdapter;
+import com.qtasnim.qhopes.model.profilpasienmodel;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SpesialisFragment.OnFragmentInteractionListener} interface
+ * {@link ProfilFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SpesialisFragment#newInstance} factory method to
+ * Use the {@link ProfilFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SpesialisFragment extends Fragment {
+public class ProfilFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,9 +37,14 @@ public class SpesialisFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<profilpasienmodel> mMenuHariinisData;
+    ListView lv;
+    private static ProfilAdapter adapter;
+    TextView titleprofil;
+
     private OnFragmentInteractionListener mListener;
 
-    public SpesialisFragment() {
+    public ProfilFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +54,11 @@ public class SpesialisFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SpesialisFragment.
+     * @return A new instance of fragment ProfilFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SpesialisFragment newInstance(String param1, String param2) {
-        SpesialisFragment fragment = new SpesialisFragment();
+    public static ProfilFragment newInstance(String param1, String param2) {
+        ProfilFragment fragment = new ProfilFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +79,57 @@ public class SpesialisFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spesialis, container, false);
+        View rootView =inflater.inflate(R.layout.fragment_nav_profil, container, false);
+
+        // Set title bar
+        ((MainActivity) getActivity())
+                .setActionBarTitle(getString(R.string.title_profil));
+
+        lv=(ListView)rootView.findViewById(R.id.listprofil);
+        titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
+       titleprofil.setText("Nomor Rekam Medis");
+        mMenuHariinisData= new ArrayList<>();
+
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 1", "112233"));
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 2", "223344"));
+        mMenuHariinisData.add(new profilpasienmodel("Pasien 3", "441231"));
+
+
+        adapter = new ProfilAdapter(mMenuHariinisData, rootView.getContext());
+
+        lv.setAdapter(adapter);
+
+        lv_profilonclick();
+        return rootView;
+    }
+
+    public void lv_profilonclick()
+    {
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                profilpasienmodel dataModel= mMenuHariinisData.get(position);
+                String filennorekmedfrominfo =  (String) dataModel.getno_med_rec()+"";
+                Snackbar.make(view, dataModel.getName()+"\n"+" No Rekam Medis : "+filennorekmedfrominfo, Snackbar.LENGTH_LONG)
+                       .setAction("No action", null).show();
+           //     Intent intent = new Intent(getActivity(),PendaftaranFragmentNav.class);
+           //     Bundle bundle = new Bundle();
+             //   bundle.putString("datainfonorekmed", filennorekmedfrominfo);
+             //   intent.putExtras(bundle);
+//                startActivity(intent);
+
+                 PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
+
+
+
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+               fragmentTransaction.replace(R.id.frameLayout,fm);
+                 fragmentTransaction.commit();
+
+
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

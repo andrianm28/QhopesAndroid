@@ -1,4 +1,4 @@
-package com.simrs.qt.simrs.model;
+package com.qtasnim.qhopes.model;
 
 public class profilpasienmodel {
 

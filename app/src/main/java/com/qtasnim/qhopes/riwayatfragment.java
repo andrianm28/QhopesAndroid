@@ -1,4 +1,4 @@
-package com.simrs.qt.simrs;
+package com.qtasnim.qhopes;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PendaftaranFragmentNav.OnFragmentInteractionListener} interface
+ * {@link riwayatfragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PendaftaranFragmentNav#newInstance} factory method to
+ * Use the {@link riwayatfragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PendaftaranFragmentNav extends Fragment {
+public class riwayatfragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +29,7 @@ public class PendaftaranFragmentNav extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public PendaftaranFragmentNav() {
+    public riwayatfragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +39,11 @@ public class PendaftaranFragmentNav extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PendaftaranFragmentNav.
+     * @return A new instance of fragment riwayatfragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PendaftaranFragmentNav newInstance(String param1, String param2) {
-        PendaftaranFragmentNav fragment = new PendaftaranFragmentNav();
+    public static riwayatfragment newInstance(String param1, String param2) {
+        riwayatfragment fragment = new riwayatfragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,11 +63,12 @@ public class PendaftaranFragmentNav extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_pendaftaran));
+                .setActionBarTitle(getString(R.string.title_myappointment));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nav_pendaftaran, container, false);
+        return inflater.inflate(R.layout.fragment_nav_myappointment, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -83,7 +84,8 @@ public class PendaftaranFragmentNav extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-
+          //  throw new RuntimeException(context.toString()
+           //         + " must implement OnFragmentInteractionListener");
         }
     }
 

@@ -1,4 +1,4 @@
-package com.simrs.qt.simrs;
+package com.qtasnim.qhopes;
 
 import android.content.Context;
 import android.net.Uri;

@@ -1,6 +1,5 @@
-package com.simrs.qt.simrs;
+package com.qtasnim.qhopes;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

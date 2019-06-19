@@ -1,34 +1,22 @@
-package com.simrs.qt.simrs.adapters;
+package com.qtasnim.qhopes.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.simrs.qt.simrs.MainActivity;
-import com.simrs.qt.simrs.MenuHariIniActivity;
-import com.simrs.qt.simrs.R;
-import com.simrs.qt.simrs.SplashscreenActivity;
-import com.simrs.qt.simrs.model.MenuHariiniModel;
+import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.model.MenuHariiniModel;
 
-import junit.framework.TestResult;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter2.ViewHolder>{
+public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.ViewHolder> {
 
 
     // Member variables.
@@ -46,7 +34,7 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
      * @param mMenuHariiniModel ArrayList containing the sports data.
      * @param context Context of the application.
      */
-    public MenuHariiniAdapter2(Context context, ArrayList<MenuHariiniModel> mMenuHariiniModel) {
+    public MenuHariiniAdapter(Context context, ArrayList<MenuHariiniModel> mMenuHariiniModel) {
         this.mMenuHariiniModel = mMenuHariiniModel;
         this.mContext = context;
     }
@@ -61,7 +49,7 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
      * @return The newly created ViewHolder.
      */
     @Override
-    public MenuHariiniAdapter2.ViewHolder onCreateViewHolder(
+    public MenuHariiniAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(mContext).
                 inflate(R.layout.view_item_menu_hariini, parent, false));
@@ -74,7 +62,7 @@ public class MenuHariiniAdapter2 extends RecyclerView.Adapter<MenuHariiniAdapter
      * @param position The adapter position.
      */
     @Override
-    public void onBindViewHolder(MenuHariiniAdapter2.ViewHolder holder,
+    public void onBindViewHolder(MenuHariiniAdapter.ViewHolder holder,
                                  int position) {
         // Get current sport.
         MenuHariiniModel currentModel = mMenuHariiniModel.get(position);

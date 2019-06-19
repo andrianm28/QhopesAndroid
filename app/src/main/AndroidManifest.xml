@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.simrs.qt.simrs">
+    package="com.qtasnim.qhopes">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashscreenActivity"
+        <activity
+            android:name="com.qtasnim.qhopes.SplashscreenActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,11 +18,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.qtasnim.qhopes.MainActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity
-            android:name=".MenuHariIniActivity">
+        <activity android:name="com.qtasnim.qhopes.MenuHariIniActivity">
         </activity>
     </application>
 

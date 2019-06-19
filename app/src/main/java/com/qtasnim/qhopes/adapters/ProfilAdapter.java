@@ -1,5 +1,4 @@
-package com.simrs.qt.simrs.adapters;
-
+package com.qtasnim.qhopes.adapters;
 
 
 import android.content.Context;
@@ -9,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.simrs.qt.simrs.R;
-import com.simrs.qt.simrs.model.profilpasienmodel;
+import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.model.profilpasienmodel;
 
 import java.util.ArrayList;
 
-public class profiladapter extends ArrayAdapter<profilpasienmodel> implements View.OnClickListener{
+public class ProfilAdapter extends ArrayAdapter<profilpasienmodel> implements View.OnClickListener {
 
     private ArrayList<profilpasienmodel> dataSet;
     Context mContext;
@@ -27,7 +26,7 @@ public class profiladapter extends ArrayAdapter<profilpasienmodel> implements Vi
 
     }
 
-    public profiladapter(ArrayList<profilpasienmodel>data, Context context) {
+    public ProfilAdapter(ArrayList<profilpasienmodel> data, Context context) {
         super(context, R.layout.view_datarow_menu_hariini, data);
         this.dataSet = data;
         this.mContext=context;
