@@ -1,4 +1,4 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,6 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.qtasnim.qhopes.BottomNavigationViewHelper;
+import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.navigation.fragments.DiagnosisNavFragment;
+import com.qtasnim.qhopes.navigation.fragments.HomeNavFragment;
+import com.qtasnim.qhopes.navigation.fragments.MyappointmentNavFragment;
+import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
+import com.qtasnim.qhopes.navigation.fragments.ProfilNavFragment;
 
 import java.util.ArrayList;
 
@@ -31,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                  //   mTextMessage.setText(R.string.title_home);
-                    HomeFragmentNav fm1 =  new HomeFragmentNav();
+                    HomeNavFragment fm1 =  new HomeNavFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.frameLayout,fm1 );
                     fragmentTransaction1.commit();
                     return true;
                 case R.id.navigation_riwayat:
-                    riwayatfragment fm2 =  new riwayatfragment();
+                    MyappointmentNavFragment fm2 =  new MyappointmentNavFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.frameLayout,fm2 );
                     fragmentTransaction2.commit();
@@ -48,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_bookmark:
-                    BookmarkFragment fm3 =  new BookmarkFragment();
+                    DiagnosisNavFragment fm3 =  new DiagnosisNavFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.frameLayout,fm3 );
                     fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_akun:
-                    ProfilFragment fm4 =  new ProfilFragment();
+                    ProfilNavFragment fm4 =  new ProfilNavFragment();
                     FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction4.replace(R.id.frameLayout,fm4 );
                     fragmentTransaction4.commit();
@@ -79,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-         HomeFragmentNav fm =  new HomeFragmentNav();
+         HomeNavFragment fm =  new HomeNavFragment();
 
            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
            fragmentTransaction.replace(R.id.frameLayout,fm );
@@ -165,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendaftaranFragmentNav fm =  new PendaftaranFragmentNav();
+                PendaftaranNavFragment fm =  new PendaftaranNavFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout,fm );
                 fragmentTransaction.commit();

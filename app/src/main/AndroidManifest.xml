@@ -17,11 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.qtasnim.qhopes.MainActivity"
-            android:theme="@style/AppTheme">
+        <activity android:name="com.qtasnim.qhopes.PilihanPeranActivity">
         </activity>
-        <activity android:name="com.qtasnim.qhopes.MenuHariIniActivity">
+        <activity
+            android:name="com.qtasnim.qhopes.activities.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.qtasnim.qhopes.activities.MainActivity" />
+        </activity>
+        <activity android:name="com.qtasnim.qhopes.MenuHariIniFragment">
         </activity>
     </application>
 

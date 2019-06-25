@@ -1,4 +1,4 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
+import com.qtasnim.qhopes.R;
 
 
 /**
@@ -79,7 +82,7 @@ public class infoFragment extends Fragment {
         idbtn_menu_info_todaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
+                PendaftaranNavFragment fm = new PendaftaranNavFragment();
 
 
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();

@@ -1,4 +1,4 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.navigation.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -17,6 +18,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.qtasnim.qhopes.MenuHariIniFragment;
+import com.qtasnim.qhopes.NewsFragment;
+import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.SpesialisFragment;
+import com.qtasnim.qhopes.fragments.MingguanFragment;
+import com.qtasnim.qhopes.fragments.infoFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -26,12 +33,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link HomeFragmentNav.OnFragmentInteractionListener} interface
+ * {@link HomeNavFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link HomeFragmentNav#newInstance} factory method to
+ * Use the {@link HomeNavFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragmentNav extends Fragment {
+public class HomeNavFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,7 +58,7 @@ public class HomeFragmentNav extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public HomeFragmentNav() {
+    public HomeNavFragment() {
         // Required empty public constructor
 
     }
@@ -62,11 +69,11 @@ public class HomeFragmentNav extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragmentNav.
+     * @return A new instance of fragment HomeNavFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragmentNav newInstance(String param1, String param2) {
-        HomeFragmentNav fragment = new HomeFragmentNav();
+    public static HomeNavFragment newInstance(String param1, String param2) {
+        HomeNavFragment fragment = new HomeNavFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -89,10 +96,7 @@ public class HomeFragmentNav extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_nav_home, container, false);
         mTextMessage = (TextView) rootView.findViewById(R.id.message);
-        centerTitle();
-        // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_beranda));
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
 
         carouselView = rootView.findViewById(R.id.carouselView);
@@ -150,9 +154,9 @@ public class HomeFragmentNav extends Fragment {
                 //   Intent i=new Intent(getApplicationContext(), viewinfoday.class);//target = nama class
                 //     startActivity(i);
 
-                MenuHariIniActivity fm =  new MenuHariIniActivity();
+                MenuHariIniFragment fm =  new MenuHariIniFragment();
 
-                Intent intent = new Intent(getActivity(), MenuHariIniActivity.class);
+                Intent intent = new Intent(getActivity(), MenuHariIniFragment.class);
                 startActivity(intent);
 
 
@@ -217,7 +221,7 @@ public class HomeFragmentNav extends Fragment {
         btn_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
+                PendaftaranNavFragment fm = new PendaftaranNavFragment();
 
 
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();

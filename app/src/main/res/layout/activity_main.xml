@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.qtasnim.qhopes.MainActivity">
+    tools:context="com.qtasnim.qhopes.activities.MainActivity">
 
     <FrameLayout
         android:layout_marginTop="?attr/actionBarSize"

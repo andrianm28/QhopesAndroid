@@ -1,4 +1,4 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.navigation.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.qtasnim.qhopes.activities.MainActivity;
+import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.adapters.ProfilAdapter;
 import com.qtasnim.qhopes.model.profilpasienmodel;
 
@@ -22,12 +26,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ProfilFragment.OnFragmentInteractionListener} interface
+ * {@link ProfilNavFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProfilFragment#newInstance} factory method to
+ * Use the {@link ProfilNavFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfilFragment extends Fragment {
+public class ProfilNavFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,7 +48,7 @@ public class ProfilFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ProfilFragment() {
+    public ProfilNavFragment() {
         // Required empty public constructor
     }
 
@@ -54,11 +58,11 @@ public class ProfilFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfilFragment.
+     * @return A new instance of fragment ProfilNavFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfilFragment newInstance(String param1, String param2) {
-        ProfilFragment fragment = new ProfilFragment();
+    public static ProfilNavFragment newInstance(String param1, String param2) {
+        ProfilNavFragment fragment = new ProfilNavFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,14 +80,40 @@ public class ProfilFragment extends Fragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                // Create new fragment and transaction
+                Fragment newFragment = new HomeNavFragment();
+                // consider using Java coding conventions (upper first char class names!!!)
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack
+                transaction.replace(R.id.containerViewPager, newFragment);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.fragment_nav_profil, container, false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
 
         // Set title bar
         ((MainActivity) getActivity())
                 .setActionBarTitle(getString(R.string.title_profil));
+
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lv=(ListView)rootView.findViewById(R.id.listprofil);
         titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
@@ -113,13 +143,13 @@ public class ProfilFragment extends Fragment {
                 String filennorekmedfrominfo =  (String) dataModel.getno_med_rec()+"";
                 Snackbar.make(view, dataModel.getName()+"\n"+" No Rekam Medis : "+filennorekmedfrominfo, Snackbar.LENGTH_LONG)
                        .setAction("No action", null).show();
-           //     Intent intent = new Intent(getActivity(),PendaftaranFragmentNav.class);
+           //     Intent intent = new Intent(getActivity(),PendaftaranNavFragment.class);
            //     Bundle bundle = new Bundle();
              //   bundle.putString("datainfonorekmed", filennorekmedfrominfo);
              //   intent.putExtras(bundle);
 //                startActivity(intent);
 
-                 PendaftaranFragmentNav fm = new PendaftaranFragmentNav();
+                 PendaftaranNavFragment fm = new PendaftaranNavFragment();
 
 
 

@@ -21,7 +21,7 @@ import java.util.Locale;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class MenuHariIniActivity extends AppCompatActivity {
+public class MenuHariIniFragment extends AppCompatActivity {
 
     // Member variables.
     private RecyclerView mRecyclerView;
@@ -145,7 +145,7 @@ public class MenuHariIniActivity extends AppCompatActivity {
 //
 //    private OnFragmentInteractionListener mListener;
 //
-//    public MenuHariIniActivity() {
+//    public MenuHariIniFragment() {
 //        // Required empty public constructor
 //    }
 //
@@ -155,11 +155,11 @@ public class MenuHariIniActivity extends AppCompatActivity {
 //     *
 //     * @param param1 Parameter 1.
 //     * @param param2 Parameter 2.
-//     * @return A new instance of fragment MenuHariIniActivity.
+//     * @return A new instance of fragment MenuHariIniFragment.
 //     */
 //    // TODO: Rename and change types and number of parameters
-//    public static MenuHariIniActivity newInstance(String param1, String param2) {
-//        MenuHariIniActivity fragment = new MenuHariIniActivity();
+//    public static MenuHariIniFragment newInstance(String param1, String param2) {
+//        MenuHariIniFragment fragment = new MenuHariIniFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);

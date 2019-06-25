@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".PilihanPeranActivity"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selamat Datang"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="150dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selamat Datang di Aplikasi QHopes"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masuk sebagai: "
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:id="@+id/btn_dokter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dokter"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="50dp"
+        />
+
+
+    <Button
+        android:id="@+id/btn_pasien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pasien"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        />
+
+
+</LinearLayout>

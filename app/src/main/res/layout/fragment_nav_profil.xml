@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qtasnim.qhopes.ProfilFragment">
+    tools:context="com.qtasnim.qhopes.navigation.fragments.ProfilNavFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

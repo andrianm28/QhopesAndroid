@@ -13,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.qtasnim.qhopes.activities.MainActivity;
+
 public class SplashscreenActivity extends AppCompatActivity {
     private int waktuLoading = 1000;
     AlertDialog.Builder mDialog;
@@ -33,7 +35,10 @@ public class SplashscreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                DialogPilihan();
+//                DialogPilihan();
+                Intent jumpActivity = new Intent(SplashscreenActivity.this, PilihanPeranActivity.class);
+                startActivity(jumpActivity);
+                finish();
             }
         }, waktuLoading);
     }
@@ -44,8 +49,8 @@ public class SplashscreenActivity extends AppCompatActivity {
         btnDokter = dialog.findViewById(R.id.btn_dokter);
         btnPasien.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
-                Intent toMainActivity = new Intent(SplashscreenActivity.this, MainActivity.class);
-                startActivity(toMainActivity);
+                Intent jumpActivity= new Intent(SplashscreenActivity.this, PilihanPeranActivity.class);
+                startActivity(jumpActivity);
                 finish();
             }
         });

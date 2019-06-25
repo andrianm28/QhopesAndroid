@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qtasnim.qhopes.MenuHariIniActivity">
-
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    tools:context="com.qtasnim.qhopes.MenuHariIniFragment"
+    android:orientation="vertical">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:text="test"
+        android:id="@+id/tv_curent_update_menu_hariini"
+        android:layout_gravity="start"
+        android:layout_margin="10dp"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_menu_hariini"
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="test"
-            android:id="@+id/titledayinfo"
-            android:gravity="start"
-            android:layout_margin="5dp"
-            />
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recyclerview_menu_hariini">
+    </android.support.v7.widget.RecyclerView>
 
-        </android.support.v7.widget.RecyclerView>
-   </LinearLayout>
+</LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context="com.qtasnim.qhopes.MenuHariIniFragment">-->
+
+    <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--&gt;-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="test"-->
+            <!--android:id="@+id/titledayinfo"-->
+            <!--android:gravity="start"-->
+            <!--android:layout_margin="5dp"-->
+            <!--/>-->
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/recyclerview_menu_hariini">-->
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+   <!--</LinearLayout>-->
 
 
-</FrameLayout>
+<!--</FrameLayout>-->

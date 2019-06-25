@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.qtasnim.qhopes.HomeFragmentNav">
+    tools:context="com.qtasnim.qhopes.navigation.fragments.HomeNavFragment">
 
     <ScrollView
         android:layout_width="match_parent"
