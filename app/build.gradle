@@ -28,6 +28,7 @@ dependencies {
     //stick with 1.0.0 because the newer version doesnt fit.
     implementation 'com.google.android:flexbox:1.0.0'
     implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     implementation 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'

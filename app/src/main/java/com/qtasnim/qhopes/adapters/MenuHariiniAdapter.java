@@ -1,14 +1,12 @@
 package com.qtasnim.qhopes.adapters;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.qtasnim.qhopes.R;
@@ -19,14 +17,31 @@ import java.util.ArrayList;
 public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.ViewHolder> {
 
 
+    private View.OnClickListener onItemClickListener;
+
     // Member variables.
     private ArrayList<MenuHariiniModel> mMenuHariiniModel;
     private Context mContext;
+    private TextView
+                mNamaDokter,
+                mNamaPoliklinik,
+                mKuotaPasien,
+                mPasienTerlayani,
+                mPasienTerdaftar,
+                mPasienMengantri,
+                mJamPraktek,
+                mDialogPoliklinik,
+                mCheckin;
+    private Button
+                mBtnDialogKembali,
+                mBtnDialogDaftar;
+    private Dialog dialog;
+    private LayoutInflater inflater;
+    private View dialogView;
 
-
-    AlertDialog.Builder dialog;
-    LayoutInflater inflater;
-    View dialogView;
+    public void setItemClickListener(View.OnClickListener clickListener) {
+        onItemClickListener = clickListener;
+    }
 
     /**
      * Constructor that passes in the sports data and the context.
@@ -64,13 +79,8 @@ public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.
     @Override
     public void onBindViewHolder(MenuHariiniAdapter.ViewHolder holder,
                                  int position) {
-        // Get current sport.
         MenuHariiniModel currentModel = mMenuHariiniModel.get(position);
-
-        // Populate the textviews with data.
         holder.bindTo(currentModel);
-
-
     }
 
     /**
@@ -90,15 +100,6 @@ public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.
     class ViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener{
 
-        // Member Variables for the TextViews
-        private TextView mNamaDokter;
-        private TextView mNamaPoliklinik;
-        private TextView mJamPraktek;
-        private TextView mJumlahPasien;
-        private TextView mCheckin;
-        private TextView mJumlahTerlayani;
-
-
         /**
          * Constructor for the ViewHolder, used in onCreateViewHolder().
          *
@@ -106,30 +107,33 @@ public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.
          */
         ViewHolder(View itemView) {
             super(itemView);
-
-            // Initialize the views.
+            itemView.setTag(this);
+            itemView.setOnClickListener(onItemClickListener);
             mNamaDokter = itemView.findViewById(R.id.tv_nama_dokter);
             mNamaPoliklinik = itemView.findViewById(R.id.tv_nama_poliklink);
+            mKuotaPasien = itemView.findViewById(R.id.tv_kuota_pasien);
+            mPasienTerlayani = itemView.findViewById(R.id.tv_pasien_terlayani);
+            mPasienTerdaftar = itemView.findViewById(R.id.tv_pasien_terdaftar);
+            mPasienMengantri = itemView.findViewById(R.id.tv_pasien_mengantri);
             mJamPraktek = itemView.findViewById(R.id.tv_jam_praktek);
-            mJumlahPasien = itemView.findViewById(R.id.tv_jumlah_pasien);
 //            mCheckin = itemView.findViewById(R.id.)
-            mJumlahTerlayani= itemView.findViewById(R.id.tv_jumlah_terlayani);
 
-            // Set the OnClickListener to the entire view.
             itemView.setOnClickListener(this);
         }
 
         void bindTo(MenuHariiniModel currentModel){
-            // Populate the textviews with data.
+
+//             Load the images into the ImageView using the Glide library.
+//            Glide.with(mContext).load(
+//                    currentSport.getImageResource()).into(mSportsImage);
+
             mNamaDokter.setText(currentModel.getNama_dokter());
             mNamaPoliklinik.setText(currentModel.getNama_poliklinik());
             mJamPraktek.setText(currentModel.getJam_praktek());
-            mJumlahPasien.setText(currentModel.getJumlah_pasien()+" pasien, ");
-            mJumlahTerlayani.setText(currentModel.getJumlah_terlayani()+" terlayani");
-
-            // Load the images into the ImageView using the Glide library.
-//            Glide.with(mContext).load(
-//                    currentSport.getImageResource()).into(mSportsImage);
+            mKuotaPasien.setText("Kuota  : "+currentModel.getKuota_pasien()+" Pasien");
+            mPasienTerlayani.setText("Terlayani : "+currentModel.getPasien_terlayani()+" Pasien");
+            mPasienTerdaftar.setText("Daftar : 0 Pasien");
+            mPasienMengantri.setText("Antri         : 0 Pasien");
         }
 
         /**
@@ -137,29 +141,9 @@ public class MenuHariiniAdapter extends RecyclerView.Adapter<MenuHariiniAdapter.
          *
          * @param view View that is clicked.
          */
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onClick(View view) {
-            MenuHariiniModel currentModel = mMenuHariiniModel.get(getAdapterPosition());
 
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-            alertDialog.setTitle(currentModel.getNama_poliklinik());
-            alertDialog.setMessage(currentModel.getNama_dokter());
-            alertDialog.setPositiveButton("DAFTAR", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            });
-            alertDialog.setNegativeButton("KEMBALI", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            AlertDialog dialog = alertDialog.create();
-            dialog.show();
         }
     }
 }

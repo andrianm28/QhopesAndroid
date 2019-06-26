@@ -1,262 +1,254 @@
 package com.qtasnim.qhopes;
 
-import android.os.Build;
+import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.qtasnim.qhopes.adapters.MenuHariiniAdapter;
+import com.qtasnim.qhopes.adapters.MenuHariiniAdapter2;
 import com.qtasnim.qhopes.model.MenuHariiniModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 
-@RequiresApi(api = Build.VERSION_CODES.O)
 public class MenuHariIniFragment extends AppCompatActivity {
 
-    // Member variables.
-    private RecyclerView mRecyclerView;
-    private ArrayList<MenuHariiniModel> mMenuHariinisData = new ArrayList<MenuHariiniModel>();
-    private MenuHariiniAdapter mAdapter;
-    private TextView tvCurrentDateTime;
-    Locale id = new Locale("in", "ID");
-    String pattern = "EEEE, dd MMM yyyy - hh:mm";
-    Date today = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat(pattern, id);
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_hariini);
+    private ArrayList<MenuHariiniModel> mMenuHariinisData = new ArrayList<>();
 
-        tvCurrentDateTime = (TextView) findViewById(R.id.tv_curent_update_menu_hariini);
-        tvCurrentDateTime.setText("Pembaharuan: "+sdf.format(today));
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            // viewHolder.getItemId();
+            // viewHolder.getItemViewType();
+            // viewHolder.itemView;
+            MenuHariiniModel mMenuHariiniModel = mMenuHariinisData.get(position);
+            setDialog(mMenuHariiniModel);
 
-        // Initialize the RecyclerView.
-        mRecyclerView = findViewById(R.id.recycler_menu_hariini);
+        }
+    };
 
-        // Set the Layout Manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    private void setDialog(MenuHariiniModel currentModel) {
 
-        // Initialize the ArrayList that will contain the data.
-        mMenuHariinisData = new ArrayList<>();
+        final Dialog mDialog = new Dialog(MenuHariIniFragment.this);
+        mDialog.setContentView(R.layout.view_dialog_menu_hariini);
 
-        // Initialize the adapter and set it to the RecyclerView.
-        mAdapter = new MenuHariiniAdapter(this, mMenuHariinisData);
-        mRecyclerView.setAdapter(mAdapter);
+        TextView mDialogPoliklinik = mDialog.findViewById(R.id.tv_dialog_poliklinik);
+        TextView mDialogDokter = mDialog.findViewById(R.id.tv_dialog_dokter);
+        TextView mJamPraktek = mDialog.findViewById(R.id.tv_dialog_jampraktek);
+        TextView mPasienTerdaftar = mDialog.findViewById(R.id.tv_dialog_pasien_terdaftar);
+        TextView mCheckin = mDialog.findViewById(R.id.tv_dialog_checkin_pasien);
+        TextView mPasienTerlayani = mDialog.findViewById(R.id.tv_dialog_pasien_terlayani);
+        TextView mKuotaPasien = mDialog.findViewById(R.id.tv_dialog_kuota_pasien);
 
-        // Get the data.
-        initializeData();
+        mDialogPoliklinik.setText(currentModel.getNama_poliklinik());
+        mDialogDokter.setText(String.format("Nama Dokter     : %s", currentModel.getNama_dokter()));
+        mJamPraktek.setText(String.format("Jam Praktek      : %s", currentModel.getJam_praktek()));
+        mPasienTerdaftar.setText(String.format("Jumlah Pasien  : %s Pasien", currentModel.getPasien_terdaftar()));
+        mCheckin.setText(String.format("Belum Checkin  : %s Pasien", currentModel.getPasien_checkin()));
+        mPasienTerlayani.setText(String.format("Terlayani             : %s Pasien", currentModel.getPasien_terlayani()));
+        mKuotaPasien.setText(String.format("Kuota                   : %s Pasien", currentModel.getKuota_pasien()));
 
-        // Helper class for creating swipe to dismiss and drag and drop
-        // functionality.
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
-                .SimpleCallback(
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
-                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            /**
-             * Defines the drag and drop functionality.
-             *
-             * @param recyclerView The RecyclerView that contains the list items
-             * @param viewHolder The SportsViewHolder that is being moved
-             * @param target The SportsViewHolder that you are switching the
-             *               original one with.
-             * @return true if the item was moved, false otherwise
-             */
-            @Override
-            public boolean onMove(RecyclerView recyclerView,
-                                  RecyclerView.ViewHolder viewHolder,
-                                  RecyclerView.ViewHolder target) {
-                // Get the from and to positions.
-                int from = viewHolder.getAdapterPosition();
-                int to = target.getAdapterPosition();
+        Button mBtnDialogKembali = mDialog.findViewById(R.id.btn_dialog_kembali);
+        Button mBtnDialogDaftar = mDialog.findViewById(R.id.btn_dialog_daftar);
 
-                // Swap the items and notify the adapter.
-                Collections.swap(mMenuHariinisData, from, to);
-                mAdapter.notifyItemMoved(from, to);
-                return true;
-            }
-
-            /**
-             * Defines the swipe to dismiss functionality.
-             *
-             * @param viewHolder The viewholder being swiped.
-             * @param direction The direction it is swiped in.
-             */
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder,
-                                 int direction) {
-                // Remove the item from the dataset.
-                mMenuHariinisData.remove(viewHolder.getAdapterPosition());
-                // Notify the adapter.
-                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+        mBtnDialogKembali.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mDialog.cancel();
             }
         });
 
-        // Attach the helper to the RecyclerView.
-        helper.attachToRecyclerView(mRecyclerView);
+        mBtnDialogDaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: set intent jumpactivity to pendaftaran activity form
+//                Intent jumpActivity = new Intent(MenuHariIniFragment.this, PendaftaranNavFragment.class);
+//                startActivity(jumpActivity);
+//                finish();
+            }
+        });
+
+        mDialog.show();
+
+    }
+
+    private void getCurrentTime() {
+        TextView tvCurrentDateTime = findViewById(R.id.tv_curent_update_menu_hariini);
+        tvCurrentDateTime.setText(String.format("Update : %s", new SimpleDateFormat(
+                "EEEE, dd MMM yyyy - hh:mm",
+                new Locale("in", "ID"))
+                .format(new Date())));
+    }
+
+    private void setRecyclerView() {
+
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_hariini);
+        MenuHariiniAdapter2 recyclerViewAdapter = new MenuHariiniAdapter2(mMenuHariinisData);
+
+        initData();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setOnItemClickListener(onItemClickListener);
+
+    }
+
+//    private void setDynamiceRecycler(){
+////
+//////         Helper class for creating swipe to dismiss and drag and drop
+//////         functionality.
+////        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
+////                .SimpleCallback(
+////                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
+////                        ItemTouchHelper.DOWN | ItemTouchHelper.UP,
+////                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+////            /**
+////             * Defines the drag and drop functionality.
+////             *
+////             * @param recyclerView The RecyclerView that contains the list items
+////             * @param viewHolder The SportsViewHolder that is being moved
+////             * @param target The SportsViewHolder that you are switching the
+////             *               original one with.
+////             * @return true if the item was moved, false otherwise
+////             */
+////            @Override
+////            public boolean onMove(RecyclerView recyclerView,
+////                                  RecyclerView.ViewHolder viewHolder,
+////                                  RecyclerView.ViewHolder target) {
+////                // Get the from and to positions.
+////                int from = viewHolder.getAdapterPosition();
+////                int to = target.getAdapterPosition();
+////
+////                // Swap the items and notify the adapter.
+////                Collections.swap(mMenuHariinisData, from, to);
+////                mAdapter.notifyItemMoved(from, to);
+////                return true;
+////            }
+////
+////            /**
+////             * Defines the swipe to dismiss functionality.
+////             *
+////             * @param viewHolder The viewholder being swiped.
+////             * @param direction The direction it is swiped in.
+////             */
+////            @Override
+////            public void onSwiped(RecyclerView.ViewHolder viewHolder,
+////                                 int direction) {
+////                // Remove the item from the dataset.
+////                mMenuHariinisData.remove(viewHolder.getAdapterPosition());
+////                // Notify the adapter.
+////                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+////            }
+////        });
+////
+////        // Attach the helper to the RecyclerView.
+////        helper.attachToRecyclerView(mRecyclerView);
+//    }
+
+    private void setActionBar() {
+        Objects.requireNonNull(getSupportActionBar()).show();
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.title_menu_hariini));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ArrayList<View> textViews = new ArrayList<>();
+        getWindow().getDecorView().findViewsWithText(textViews, getTitle(), View.FIND_VIEWS_WITH_TEXT);
+        if (textViews.size() > 0) {
+            AppCompatTextView appCompatTextView = null;
+            if (textViews.size() == 1) {
+                appCompatTextView = (AppCompatTextView) textViews.get(0);
+            } else {
+                for (View v : textViews) {
+                    if (v.getParent() instanceof Toolbar) {
+                        appCompatTextView = (AppCompatTextView) v;
+                        break;
+                    }
+                }
+            }
+            if (appCompatTextView != null) {
+                ViewGroup.LayoutParams params = appCompatTextView.getLayoutParams();
+                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                appCompatTextView.setLayoutParams(params);
+                appCompatTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //                // Create new fragment and transaction
+//                Fragment newFragment = new HomeNavFragment();
+//                // consider using Java coding conventions (upper first char class names!!!)
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//                // Replace whatever is in the fragment_container view with this fragment,
+//                // and add the transaction to the back stack
+//                transaction.replace(R.id.containerViewPager, newFragment);
+//                transaction.addToBackStack(null);
+//
+//                // Commit the transaction
+//                transaction.commit();
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
      * Initialize the sports data from resources.
      */
-    private void initializeData(){
+    private void initData() {
 
-        mMenuHariinisData.add(new MenuHariiniModel("Fisiotherapy","Widodo Amd. Fis","07:30","4","3","0","0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Internist","Bambang Eko Wahyono, dr.Sp. PD","08:00","1","0","0","45"));
-        mMenuHariinisData.add(new MenuHariiniModel("Anak","Taufiqur Rahman,dr. Spa","08:00","28","28","0","0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Syaraf","Dhimas Hantoko, dr.Sp.S","08:00","49","40","0","1"));
-        mAdapter = new MenuHariiniAdapter(mRecyclerView.getContext(), mMenuHariinisData);
+        mMenuHariinisData.add(new MenuHariiniModel("Fisiotherapy", "Widodo Amd. Fis", "07:30", "4", "3", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Bambang Eko Wahyono, dr.Sp. PD", "08:00", "1", "0", "0", "45"));
+        mMenuHariinisData.add(new MenuHariiniModel("Anak", "Taufiqur Rahman,dr. Spa", "08:00", "28", "28", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Syaraf", "Dhimas Hantoko, dr.Sp.S", "08:00", "49", "40", "0", "1"));
+        mMenuHariinisData.add(new MenuHariiniModel("Bedah Syaraf", "Suhariyanto, dr. Sp.BS", "08:00", "13", "11", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Jantung", "Laksmi Pramushinta, dr, Sp.JP", "08:30", "44", "25", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Fajar Admayana, dr,Sp.PD", "08:00", "32", "27", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Gigi", "Agustina, drg", "09:00", "3", "2", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Bedah", "Chrisna Budi Satria, dr, Sp. B", "09:00", "14", "13", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Kandungan", "Supratiko, dr, Sp. OG(K)", "09:00", "0", "0", "0", "5"));
+        mMenuHariinisData.add(new MenuHariiniModel("Urologi", "Randa Halfan, dr, Sp.U", "09:00", "25", "9", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Paru", "Ganis Tjahyono, dr.SP.P", "10:00", "29", "12", "0", "4"));
+        mMenuHariinisData.add(new MenuHariiniModel("Mata", "Kartini, dr SpM", "10:00", "18", "10", "0", "0"));
+        mMenuHariinisData.add(new MenuHariiniModel("Rehab Medis", "Zakir Iskandar, dr. Sp.RM", "10:00", "15", "13", "0", "3"));
+        mMenuHariinisData.add(new MenuHariiniModel("Bedah Ortopedi", "Abdur Rahman Yusuf H, dr. SpOT", "12:00", "24", "0", "0", "5"));
+        mMenuHariinisData.add(new MenuHariiniModel("Kandungan", "Trimayanta Olfah, dr, SpOG", "12:00", "7", "0", "0", "1"));
+        mMenuHariinisData.add(new MenuHariiniModel("T H T", "Hari Purnomo, dr. Sp.THT", "13:00", "4", "0", "0", "1"));
+        mMenuHariinisData.add(new MenuHariiniModel("Kulit dan Kelamin", "Enik Sri Hartati, dr.SpKK", "14:00", "0", "0", "0", "22"));
+        mMenuHariinisData.add(new MenuHariiniModel("Paru", "Lilis Asfaroh, dr Sp.P", "14:00", "0", "0", "0", "5"));
+        mMenuHariinisData.add(new MenuHariiniModel("Gigi", "Agus Syaifuddin Setiawan, drg", "15:00", "0", "0", "0", "1"));
+        mMenuHariinisData.add(new MenuHariiniModel("Urologi", "Rochmad Yasin,dr.Sp.U", "16:00", "0", "0", "0", "3"));
+        mMenuHariinisData.add(new MenuHariiniModel("Syaraf", "Irawan S, dr.Sp.S", "16:00", "0", "0", "0", "26"));
+        mMenuHariinisData.add(new MenuHariiniModel("Bedah Kepala Leher", "Sahudi, dr. Sp.BKL", "16:00", "0", "0", "0", "9"));
+        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Eko Budi Santoso, dr Sp.PD", "18:00", "1", "0", "0", "15"));
+        mMenuHariinisData.add(new MenuHariiniModel("Jantung", "Mochammad Basori, Sp.JP", "18:30", "0", "0", "0", "25"));
+        MenuHariiniAdapter2 mAdapter = new MenuHariiniAdapter2(mMenuHariinisData);
 
-        // Notify the adapter of the change.
         mAdapter.notifyDataSetChanged();
     }
+    
+    private void setContent() {
 
-    /**
-     * onClick method for th FAB that resets the data.
-     *
-     * @param view The button view that was clicked.
-     */
-    public void resetSports(View view) {
-        initializeData();
+        setActionBar();
+        getCurrentTime();
+        setRecyclerView();
     }
-//
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//    ArrayList<MenuHariiniModel> mMenuHariinisData;
-//    ListView lv;
-//    TextView titletodayinfo;
-//    private static MenuHariiniAdapter adapter;
-//
-//    private OnFragmentInteractionListener mListener;
-//
-//    public MenuHariIniFragment() {
-//        // Required empty public constructor
-//    }
-//
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment MenuHariIniFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static MenuHariIniFragment newInstance(String param1, String param2) {
-//        MenuHariIniFragment fragment = new MenuHariIniFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        View rootView =inflater.inflate(R.layout.fragment_menu_hariini, container, false);
-//        // Set title bar
-//        ((MainActivity) getActivity())
-//                .setActionBarTitle(getString(R.string.title_menu_hariini));
-////        lv=(ListView)rootView.findViewById(R.id.listday);
-//        titletodayinfo = (TextView) rootView.findViewById(R.id.titledayinfo);
-//        titletodayinfo.setText("Jadwal Hari Ini");
-//        mMenuHariinisData = new ArrayList<>();
-//
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. A", "Gigi", "07:00","September 23, 2008"));
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. B", "Polianak", "08:00","February 9, 2009"));
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. C", "SP 3", "09:00","April 27, 2009"));
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. D", "Sp 4", "10:00","October 26, 2009"));
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. E", "sp 5", "11:00","May 20, 2010"));
-//        mMenuHariinisData.add(new MenuHariiniModel("Dr. F", "sp 6", "12:00","December 6, 2010"));
-//
-//
-//        adapter= new MenuHariiniAdapter(mMenuHariinisData, rootView.getContext());
-//
-//        lv.setAdapter(adapter);
-//
-//        lv_onclick();
-//        return rootView;
-//    }
-//
-//    public void lv_onclick()
-//    {
-//
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                MenuHariiniModel dataModel= mMenuHariinisData.get(position);
-//
-//                Snackbar.make(view, dataModel.getNama_dokter()+
-//                        "\n"+dataModel.getNama_poliklinik()+
-//                        " API: "+dataModel.getJam_praktek(), Snackbar.LENGTH_LONG)
-//                        .setAction("No action", null).show();
-//            }
-//        });
-//    }
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-//
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//         //   throw new RuntimeException(context.toString()
-//        //            + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-//
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu_hariini);
+        setContent();
+    }
 }

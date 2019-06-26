@@ -2,34 +2,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="2dp"
+    >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
                 android:id="@+id/ic_menu_hariini"
-                android:src="@mipmap/ic_button_nav_profil"/>
+                android:src="@mipmap/ic_launcher_round"
+                />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/ic_menu_hariini"
+                android:layout_centerVertical="true"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_nama_poliklink"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Poliklinik"
                     android:textColor="@android:color/black" />
 
                 <TextView
@@ -37,24 +41,48 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nama_poliklink"
-                    android:text="Dokter"
                     android:textColor="@android:color/black" />
 
-                <TextView
-                    android:id="@+id/tv_jumlah_pasien"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_below="@id/tv_nama_dokter"
-                    android:text="Jumlah Pasien"
-                    />
-                <TextView
-                    android:id="@+id/tv_jumlah_terlayani"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_nama_dokter"
-                    android:layout_toEndOf="@id/tv_jumlah_pasien"
-                    android:text="Jumlah Terlayani"
-                    />
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_kuota_pasien"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/text_margin"
+                            />
+                        <TextView
+                            android:id="@+id/tv_pasien_terlayani"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_pasien_terdaftar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/text_margin"
+                            />
+                        <TextView
+                            android:id="@+id/tv_pasien_mengantri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_jam_praktek"
@@ -63,7 +91,6 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:textColor="@android:color/black"
-                    android:text="Jam Praktek"
                     />
 
             </RelativeLayout>

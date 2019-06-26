@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
     private void centerTitle() {
         ArrayList<View> textViews = new ArrayList<>();
 
