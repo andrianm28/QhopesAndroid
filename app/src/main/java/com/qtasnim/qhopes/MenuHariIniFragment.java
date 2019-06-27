@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class MenuHariIniFragment extends AppCompatActivity {
 
-    private ArrayList<MenuHariiniModel> mMenuHariinisData = new ArrayList<>();
+    private ArrayList<MenuHariiniModel> mModelData = new ArrayList<>();
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
@@ -35,7 +35,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
             // viewHolder.getItemId();
             // viewHolder.getItemViewType();
             // viewHolder.itemView;
-            MenuHariiniModel mMenuHariiniModel = mMenuHariinisData.get(position);
+            MenuHariiniModel mMenuHariiniModel = mModelData.get(position);
             setDialog(mMenuHariiniModel);
 
         }
@@ -96,7 +96,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
     private void setRecyclerView() {
 
         RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_hariini);
-        MenuHariiniAdapter2 recyclerViewAdapter = new MenuHariiniAdapter2(mMenuHariinisData);
+        MenuHariiniAdapter2 recyclerViewAdapter = new MenuHariiniAdapter2(mModelData);
 
         initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -132,7 +132,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
 ////                int to = target.getAdapterPosition();
 ////
 ////                // Swap the items and notify the adapter.
-////                Collections.swap(mMenuHariinisData, from, to);
+////                Collections.swap(mModelData, from, to);
 ////                mAdapter.notifyItemMoved(from, to);
 ////                return true;
 ////            }
@@ -147,7 +147,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
 ////            public void onSwiped(RecyclerView.ViewHolder viewHolder,
 ////                                 int direction) {
 ////                // Remove the item from the dataset.
-////                mMenuHariinisData.remove(viewHolder.getAdapterPosition());
+////                mModelData.remove(viewHolder.getAdapterPosition());
 ////                // Notify the adapter.
 ////                mAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
 ////            }
@@ -203,37 +203,34 @@ public class MenuHariIniFragment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Initialize the sports data from resources.
-     */
     private void initData() {
 
-        mMenuHariinisData.add(new MenuHariiniModel("Fisiotherapy", "Widodo Amd. Fis", "07:30", "4", "3", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Bambang Eko Wahyono, dr.Sp. PD", "08:00", "1", "0", "0", "45"));
-        mMenuHariinisData.add(new MenuHariiniModel("Anak", "Taufiqur Rahman,dr. Spa", "08:00", "28", "28", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Syaraf", "Dhimas Hantoko, dr.Sp.S", "08:00", "49", "40", "0", "1"));
-        mMenuHariinisData.add(new MenuHariiniModel("Bedah Syaraf", "Suhariyanto, dr. Sp.BS", "08:00", "13", "11", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Jantung", "Laksmi Pramushinta, dr, Sp.JP", "08:30", "44", "25", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Fajar Admayana, dr,Sp.PD", "08:00", "32", "27", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Gigi", "Agustina, drg", "09:00", "3", "2", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Bedah", "Chrisna Budi Satria, dr, Sp. B", "09:00", "14", "13", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Kandungan", "Supratiko, dr, Sp. OG(K)", "09:00", "0", "0", "0", "5"));
-        mMenuHariinisData.add(new MenuHariiniModel("Urologi", "Randa Halfan, dr, Sp.U", "09:00", "25", "9", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Paru", "Ganis Tjahyono, dr.SP.P", "10:00", "29", "12", "0", "4"));
-        mMenuHariinisData.add(new MenuHariiniModel("Mata", "Kartini, dr SpM", "10:00", "18", "10", "0", "0"));
-        mMenuHariinisData.add(new MenuHariiniModel("Rehab Medis", "Zakir Iskandar, dr. Sp.RM", "10:00", "15", "13", "0", "3"));
-        mMenuHariinisData.add(new MenuHariiniModel("Bedah Ortopedi", "Abdur Rahman Yusuf H, dr. SpOT", "12:00", "24", "0", "0", "5"));
-        mMenuHariinisData.add(new MenuHariiniModel("Kandungan", "Trimayanta Olfah, dr, SpOG", "12:00", "7", "0", "0", "1"));
-        mMenuHariinisData.add(new MenuHariiniModel("T H T", "Hari Purnomo, dr. Sp.THT", "13:00", "4", "0", "0", "1"));
-        mMenuHariinisData.add(new MenuHariiniModel("Kulit dan Kelamin", "Enik Sri Hartati, dr.SpKK", "14:00", "0", "0", "0", "22"));
-        mMenuHariinisData.add(new MenuHariiniModel("Paru", "Lilis Asfaroh, dr Sp.P", "14:00", "0", "0", "0", "5"));
-        mMenuHariinisData.add(new MenuHariiniModel("Gigi", "Agus Syaifuddin Setiawan, drg", "15:00", "0", "0", "0", "1"));
-        mMenuHariinisData.add(new MenuHariiniModel("Urologi", "Rochmad Yasin,dr.Sp.U", "16:00", "0", "0", "0", "3"));
-        mMenuHariinisData.add(new MenuHariiniModel("Syaraf", "Irawan S, dr.Sp.S", "16:00", "0", "0", "0", "26"));
-        mMenuHariinisData.add(new MenuHariiniModel("Bedah Kepala Leher", "Sahudi, dr. Sp.BKL", "16:00", "0", "0", "0", "9"));
-        mMenuHariinisData.add(new MenuHariiniModel("Internist", "Eko Budi Santoso, dr Sp.PD", "18:00", "1", "0", "0", "15"));
-        mMenuHariinisData.add(new MenuHariiniModel("Jantung", "Mochammad Basori, Sp.JP", "18:30", "0", "0", "0", "25"));
-        MenuHariiniAdapter2 mAdapter = new MenuHariiniAdapter2(mMenuHariinisData);
+        mModelData.add(new MenuHariiniModel("Fisiotherapy", "Widodo Amd. Fis", "07:30", "4", "3", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Internist", "Bambang Eko Wahyono, dr.Sp. PD", "08:00", "1", "0", "0", "45"));
+        mModelData.add(new MenuHariiniModel("Anak", "Taufiqur Rahman,dr. Spa", "08:00", "28", "28", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Syaraf", "Dhimas Hantoko, dr.Sp.S", "08:00", "49", "40", "0", "1"));
+        mModelData.add(new MenuHariiniModel("Bedah Syaraf", "Suhariyanto, dr. Sp.BS", "08:00", "13", "11", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Jantung", "Laksmi Pramushinta, dr, Sp.JP", "08:30", "44", "25", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Internist", "Fajar Admayana, dr,Sp.PD", "08:00", "32", "27", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Gigi", "Agustina, drg", "09:00", "3", "2", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Bedah", "Chrisna Budi Satria, dr, Sp. B", "09:00", "14", "13", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Kandungan", "Supratiko, dr, Sp. OG(K)", "09:00", "0", "0", "0", "5"));
+        mModelData.add(new MenuHariiniModel("Urologi", "Randa Halfan, dr, Sp.U", "09:00", "25", "9", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Paru", "Ganis Tjahyono, dr.SP.P", "10:00", "29", "12", "0", "4"));
+        mModelData.add(new MenuHariiniModel("Mata", "Kartini, dr SpM", "10:00", "18", "10", "0", "0"));
+        mModelData.add(new MenuHariiniModel("Rehab Medis", "Zakir Iskandar, dr. Sp.RM", "10:00", "15", "13", "0", "3"));
+        mModelData.add(new MenuHariiniModel("Bedah Ortopedi", "Abdur Rahman Yusuf H, dr. SpOT", "12:00", "24", "0", "0", "5"));
+        mModelData.add(new MenuHariiniModel("Kandungan", "Trimayanta Olfah, dr, SpOG", "12:00", "7", "0", "0", "1"));
+        mModelData.add(new MenuHariiniModel("T H T", "Hari Purnomo, dr. Sp.THT", "13:00", "4", "0", "0", "1"));
+        mModelData.add(new MenuHariiniModel("Kulit dan Kelamin", "Enik Sri Hartati, dr.SpKK", "14:00", "0", "0", "0", "22"));
+        mModelData.add(new MenuHariiniModel("Paru", "Lilis Asfaroh, dr Sp.P", "14:00", "0", "0", "0", "5"));
+        mModelData.add(new MenuHariiniModel("Gigi", "Agus Syaifuddin Setiawan, drg", "15:00", "0", "0", "0", "1"));
+        mModelData.add(new MenuHariiniModel("Urologi", "Rochmad Yasin,dr.Sp.U", "16:00", "0", "0", "0", "3"));
+        mModelData.add(new MenuHariiniModel("Syaraf", "Irawan S, dr.Sp.S", "16:00", "0", "0", "0", "26"));
+        mModelData.add(new MenuHariiniModel("Bedah Kepala Leher", "Sahudi, dr. Sp.BKL", "16:00", "0", "0", "0", "9"));
+        mModelData.add(new MenuHariiniModel("Internist", "Eko Budi Santoso, dr Sp.PD", "18:00", "1", "0", "0", "15"));
+        mModelData.add(new MenuHariiniModel("Jantung", "Mochammad Basori, Sp.JP", "18:30", "0", "0", "0", "25"));
+        MenuHariiniAdapter2 mAdapter = new MenuHariiniAdapter2(mModelData);
 
         mAdapter.notifyDataSetChanged();
     }

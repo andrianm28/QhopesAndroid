@@ -27,7 +27,7 @@ public class infoFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    Button idbtn_menu_info_todaftar;
+    Button btn_menu_info_todaftar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,15 +71,15 @@ public class infoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_info, container, false);
-        idbtn_menu_info_todaftar = (Button) rootView.findViewById(R.id.idbtn_menu_infoTodaftar);
-        idbtn_menu_info_todaftar_onClick();
+        btn_menu_info_todaftar = (Button) rootView.findViewById(R.id.btn_menu_infoTodaftar);
+        btn_menu_info_todaftar_onClick();
 
         return rootView;
     }
 
-    public void idbtn_menu_info_todaftar_onClick()
+    public void btn_menu_info_todaftar_onClick()
     {
-        idbtn_menu_info_todaftar.setOnClickListener(new View.OnClickListener() {
+        btn_menu_info_todaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PendaftaranNavFragment fm = new PendaftaranNavFragment();

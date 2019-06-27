@@ -4,13 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.qtasnim.qhopes.activities.MainActivity;
 import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.activities.MainActivity;
 
 
 /**
@@ -64,15 +63,16 @@ public class DiagnosisNavFragment extends Fragment {
         }
     }
 
+    private void setActionBar(){
+        ((MainActivity) getActivity())
+                .setActionBarTitle(getString(R.string.title_diagnosis));
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-        // Set title bar
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_diagnosis));
+        setActionBar();
         return inflater.inflate(R.layout.fragment_nav_diagnosis, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

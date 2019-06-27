@@ -28,14 +28,18 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
+    MenuItem item;
+
 
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                  //   mTextMessage.setText(R.string.title_home);
@@ -51,10 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction2.commit();
 
                     return  true;
-
-                case R.id.navigation_pendaftaran:
-
-                    return true;
                 case R.id.navigation_bookmark:
                     DiagnosisNavFragment fm3 =  new DiagnosisNavFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
@@ -81,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
 //        getSupportActionBar().setTitle("Home");
         fab=(FloatingActionButton) findViewById(R.id.fab);
         fabOnclick();
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+//        MenuItem itemPendaftaran = findViewById(R.id.navigation_pendaftaran);
+//        itemPendaftaran.setEnabled(false);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
@@ -136,31 +138,26 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
        // moveTaskToBack(false);
         showInputDialog();
-
-
     }
 
     protected void showInputDialog() {
-
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
         alertDialogBuilder.setTitle("Apakah anda yakin mau keluar ?");
         // setup a dialog window
         alertDialogBuilder.setCancelable(false)
-                .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //    resultText.setText("Hello, " + editText.getText());
 
                        // Intent pilih =new Intent(choice.this, MainActivity.class);
                    //     startActivity(pilih);
-                        dialog.cancel();
-
+                        finish();
                     }
                 })
-                .setNegativeButton("Ok",
-                        new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                finish();
+                                dialog.cancel();
                             }
                         });
 
