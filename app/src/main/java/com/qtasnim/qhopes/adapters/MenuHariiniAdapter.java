@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.model.MenuHariiniModel;
+import com.qtasnim.qhopes.models.MenuHariiniModel;
 
 import java.util.ArrayList;
 

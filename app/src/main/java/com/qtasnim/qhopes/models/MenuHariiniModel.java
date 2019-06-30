@@ -1,14 +1,27 @@
-package com.qtasnim.qhopes.model;
+package com.qtasnim.qhopes.models;
 
 public class MenuHariiniModel {
 
     String nama_poliklinik, nama_dokter, jam_praktek, pasien_terdaftar, pasien_terlayani, kuota_pasien, pasien_checkin;
 
+    public MenuHariiniModel(
+            String nama_poliklinik,
+            String nama_dokter,
+            String jam_praktek,
+            String pasien_terdaftar,
+            String pasien_terlayani,
+            String kuota_pasien,
+            String pasien_checkin
+    ) {
+        this.nama_poliklinik = nama_poliklinik;
+        this.nama_dokter = nama_dokter;
+        this.jam_praktek = jam_praktek;
+        this.pasien_terdaftar = pasien_terdaftar;
+        this.pasien_terlayani = pasien_terlayani;
+        this.kuota_pasien = kuota_pasien;
+        this.pasien_checkin = pasien_checkin;
+    }
 
-//    private TextView
-//            mNamaDokter,
-//            mNamaPoliklinik,
-//            mDialogDokter,
 //            mDialogPoliklinik,
 
     public String getNama_poliklinik() {
@@ -62,7 +75,6 @@ public class MenuHariiniModel {
     public String getPasien_checkin() {
         return pasien_checkin;
     }
-
     public void setPasien_checkin(String pasien_checkin) {
         this.pasien_checkin = pasien_checkin;
     }
@@ -71,24 +83,7 @@ public class MenuHariiniModel {
 //            mPasienTerdaftar,
 //            mPasienMengantri,
 //            mJamPraktek,
-//            mCheckin;
 
-    public MenuHariiniModel(
-            String nama_poliklinik,
-            String nama_dokter,
-            String jam_praktek,
-            String pasien_terdaftar,
-            String pasien_terlayani,
-            String kuota_pasien,
-            String pasien_checkin
-            ) {
-        this.nama_poliklinik = nama_poliklinik;
-        this.nama_dokter = nama_dokter;
-        this.jam_praktek = jam_praktek;
-        this.pasien_terdaftar = pasien_terdaftar;
-        this.pasien_terlayani = pasien_terlayani;
-        this.kuota_pasien = kuota_pasien;
-        this.pasien_checkin = pasien_checkin;
-    }
+//            mCheckin;
 
 }

@@ -3,10 +3,11 @@ package com.qtasnim.qhopes.navigation.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +16,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.qtasnim.qhopes.activities.MainActivity;
 import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.activities.MainActivity;
 import com.qtasnim.qhopes.adapters.ProfilAdapter;
-import com.qtasnim.qhopes.model.profilpasienmodel;
+import com.qtasnim.qhopes.models.AkunModel;
+import com.qtasnim.qhopes.models.profilpasienmodel;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,7 @@ public class ProfilNavFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<AkunModel> mAkunModel = new ArrayList<AkunModel>();
     ArrayList<profilpasienmodel> mMenuHariinisData;
     ListView lv;
     private static ProfilAdapter adapter;
@@ -107,30 +110,30 @@ public class ProfilNavFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.fragment_nav_profil, container, false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
-
-        // Set title bar
         ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_profil));
-
+                .setActionBarTitle(getString(R.string.title_akun));
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        lv=(ListView)rootView.findViewById(R.id.listprofil);
-        titleprofil = (TextView) rootView.findViewById(R.id.title_dataprofil);
-       titleprofil.setText("Nomor Rekam Medis");
-        mMenuHariinisData= new ArrayList<>();
-
-        mMenuHariinisData.add(new profilpasienmodel("Pasien 1", "112233"));
-        mMenuHariinisData.add(new profilpasienmodel("Pasien 2", "223344"));
-        mMenuHariinisData.add(new profilpasienmodel("Pasien 3", "441231"));
-
-
-        adapter = new ProfilAdapter(mMenuHariinisData, rootView.getContext());
-
-        lv.setAdapter(adapter);
-
-        lv_profilonclick();
         return rootView;
+    }
+
+    private void initData(){
+        mAkunModel.add(new AkunModel("andrianm28","andrianmaulana28@gmail.com","082278911288"));
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initData();
+        TextView mUsername,mUseremail,mUserphone;
+        mUsername = getView().findViewById(R.id.tv_username);
+        mUseremail = getView().findViewById(R.id.tv_useremail);
+        mUserphone = getView().findViewById(R.id.tv_userphone);
+
+        mUsername.setText(mAkunModel.get(0).getUsername());
+        mUseremail.setText(mAkunModel.get(0).getUseremail());
+        mUserphone.setText(mAkunModel.get(0).getUserphone());
+
     }
 
     public void lv_profilonclick()

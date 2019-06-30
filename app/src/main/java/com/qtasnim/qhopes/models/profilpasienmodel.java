@@ -1,4 +1,4 @@
-package com.qtasnim.qhopes.model;
+package com.qtasnim.qhopes.models;
 
 public class profilpasienmodel {
 

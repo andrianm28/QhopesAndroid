@@ -17,7 +17,7 @@ public class Components {
 //                .setActionBarTitle(getString(R.string.title_diagnosis));
 //    }
 
-    private void centerTitle() {
+    public void centerTitle() {
         ArrayList<View> textViews = new ArrayList<>();
 
         if(textViews.size() > 0) {

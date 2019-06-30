@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.qtasnim.qhopes.adapters.MenuHariiniAdapter2;
-import com.qtasnim.qhopes.model.MenuHariiniModel;
+import com.qtasnim.qhopes.models.MenuHariiniModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

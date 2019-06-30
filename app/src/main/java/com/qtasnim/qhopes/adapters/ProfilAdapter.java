@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.model.profilpasienmodel;
+import com.qtasnim.qhopes.models.profilpasienmodel;
 
 import java.util.ArrayList;
 
