@@ -9,33 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
 import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link infoFragment.OnFragmentInteractionListener} interface
+ * {@link MenuKontakFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link infoFragment#newInstance} factory method to
+ * Use the {@link MenuKontakFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class infoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MenuKontakFragment extends Fragment {
     Button btn_menu_info_todaftar;
+    TextView mTvTitleKontak,mTvAlamatKontak, mTvEmailKontak, mTvPhone1Kontak, mTvPhone2Kontak;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
 
     private OnFragmentInteractionListener mListener;
 
-    public infoFragment() {
+    public MenuKontakFragment() {
         // Required empty public constructor
     }
 
@@ -45,37 +41,39 @@ public class infoFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment infoFragment.
+     * @return A new instance of fragment MenuInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static infoFragment newInstance(String param1, String param2) {
-        infoFragment fragment = new infoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+    public static MenuKontakFragment newInstance(String param1, String param2) {
+        MenuKontakFragment fragment = new MenuKontakFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_info, container, false);
-        btn_menu_info_todaftar = (Button) rootView.findViewById(R.id.btn_menu_infoTodaftar);
-        btn_menu_info_todaftar_onClick();
+        View rootView = inflater.inflate(R.layout.fragment_menu_kontak, container, false);
+        mTvTitleKontak = rootView.findViewById(R.id.tv_title_kontak);
+        mTvTitleKontak.setText("Contact Us");
+        mTvAlamatKontak = rootView.findViewById(R.id.tv_alamat_kontak);
+        mTvAlamatKontak.setText("Jl. RE. Martadinata Bypass Cikaran");
+        mTvEmailKontak = rootView.findViewById(R.id.tv_email_kontak);
+        mTvEmailKontak.setText("admin@rsbhaktihusada.com");
+        mTvPhone1Kontak = rootView.findViewById(R.id.tv_phone1_kontak);
+        mTvPhone1Kontak.setText("+62 21 890 0530");
+        mTvPhone2Kontak = rootView.findViewById(R.id.tv_phone2_kontak);
+        mTvPhone2Kontak.setText("+62 21 890 0570");
+
 
         return rootView;
     }
+
 
     public void btn_menu_info_todaftar_onClick()
     {

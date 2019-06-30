@@ -1,30 +1,33 @@
-package com.qtasnim.qhopes.navigation.fragments;
+package com.qtasnim.qhopes.fragments;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.activities.MainActivity;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link DiagnosisNavFragment.OnFragmentInteractionListener} interface
+ * {@link MenuInfoFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link DiagnosisNavFragment#newInstance} factory method to
+ * Use the {@link MenuInfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DiagnosisNavFragment extends Fragment {
+public class MenuInfoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    Button btn_menu_info_todaftar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -32,7 +35,7 @@ public class DiagnosisNavFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public DiagnosisNavFragment() {
+    public MenuInfoFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +45,11 @@ public class DiagnosisNavFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DiagnosisNavFragment.
+     * @return A new instance of fragment MenuInfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DiagnosisNavFragment newInstance(String param1, String param2) {
-        DiagnosisNavFragment fragment = new DiagnosisNavFragment();
+    public static MenuInfoFragment newInstance(String param1, String param2) {
+        MenuInfoFragment fragment = new MenuInfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,15 +66,30 @@ public class DiagnosisNavFragment extends Fragment {
         }
     }
 
-    private void setActionBar(){
-        ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_diagnosis));
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setActionBar();
-        return inflater.inflate(R.layout.fragment_nav_diagnosis, container, false);
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_info, container, false);
+        btn_menu_info_todaftar = (Button) rootView.findViewById(R.id.btn_menu_infoTodaftar);
+        btn_menu_info_todaftar_onClick();
+
+        return rootView;
+    }
+
+    public void btn_menu_info_todaftar_onClick()
+    {
+        btn_menu_info_todaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PendaftaranNavFragment fm = new PendaftaranNavFragment();
+
+
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout,fm);
+                fragmentTransaction.commit();
+            }
+        });
 
     }
 
@@ -88,8 +106,8 @@ public class DiagnosisNavFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-          //  throw new RuntimeException(context.toString()
-          //          + " must implement OnFragmentInteractionListener");
+         //   throw new RuntimeException(context.toString()
+        //            + " must implement OnFragmentInteractionListener");
         }
     }
 

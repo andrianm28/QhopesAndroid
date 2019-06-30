@@ -20,8 +20,9 @@ import com.qtasnim.qhopes.NewsFragment;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.SpesialisFragment;
 import com.qtasnim.qhopes.activities.MainActivity;
+import com.qtasnim.qhopes.fragments.MenuKontakFragment;
 import com.qtasnim.qhopes.fragments.MingguanFragment;
-import com.qtasnim.qhopes.fragments.infoFragment;
+import com.qtasnim.qhopes.fragments.MenuInfoFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -30,7 +31,7 @@ import java.util.Objects;
 
 public class HomeNavFragment extends Fragment {
 
-    private ImageButton mBtnMenuMingguini,mBtnMenuBerita,mBtnMenuSpesialis,mBtnDaftar,btn_menu_info,btn_day;
+    private ImageButton mBtnMenuMingguini,mBtnMenuBerita,mBtnMenuSpesialis,mBtnDaftar,btn_menu_info,btn_day,mBtnMenuKontak;
     
     int[] sampleImages = {R.drawable.jp1, R.drawable.jp2, R.drawable.jp3, R.drawable.jp4};
 
@@ -72,6 +73,8 @@ public class HomeNavFragment extends Fragment {
 //        mBtnDaftar_click();
         btn_menu_info = rootView.findViewById(R.id.btn_menu_info);
         btn_menu_info_click();
+        mBtnMenuKontak = rootView.findViewById(R.id.btn_menu_kontak);
+        btnMenuKontakClicked();
 
         return rootView;
     }
@@ -100,7 +103,6 @@ public class HomeNavFragment extends Fragment {
         });
 
     }
-
 
     public void mBtnMenuMingguini_click()
     {
@@ -164,12 +166,27 @@ public class HomeNavFragment extends Fragment {
     }
 
 
+    public void btnMenuKontakClicked()
+    {
+        mBtnMenuKontak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuKontakFragment fm = new MenuKontakFragment();
+                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frameLayout,fm);
+                fragmentTransaction.commit();
+
+            }
+        });
+    }
+
+
     public void btn_menu_info_click()
     {
         btn_menu_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                infoFragment fm = new infoFragment();
+                MenuInfoFragment fm = new MenuInfoFragment();
 
 
                 FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
