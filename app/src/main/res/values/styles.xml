@@ -8,5 +8,62 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">@color/md_blue_grey_100</item>
+    </style>
+
+    <style name="DividerVertical">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/md_blue_grey_100</item>
+    </style>
+
+    <style name="InputTextWrap" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxStrokeColor">@color/md_blue_grey_100</item>
+        <item name="android:textColorHint">@color/md_grey_600</item>
+        <item name="hintTextAppearance">@style/InputTextHintStyle</item>
+    </style>
+
+    <style name="InputText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusedByDefault">false</item>
+        <item name="android:drawablePadding">@dimen/spacing_large</item>
+        <item name="android:drawableTint">@color/md_grey_700</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="InputTextHintStyle">
+        <item name="android:textColor">@color/md_blue_grey_300</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ButtonDefault" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+    </style>
+
+    <style name="TextLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="android:textColor">@color/md_grey_500</item>
+    </style>
+
+    <style name="TextValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+
+
 
 </resources>

@@ -1,17 +1,18 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.qtasnim.qhopes.activities.MainActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.qtasnim.qhopes.R;
 
 public class PilihanPeranActivity extends AppCompatActivity {
 

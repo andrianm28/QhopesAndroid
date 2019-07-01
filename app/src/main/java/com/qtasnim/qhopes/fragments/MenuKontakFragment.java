@@ -3,13 +3,14 @@ package com.qtasnim.qhopes.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;

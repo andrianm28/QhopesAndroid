@@ -1,19 +1,20 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.qtasnim.qhopes.activities.MainActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.qtasnim.qhopes.R;
 
 public class SplashscreenActivity extends AppCompatActivity {
     private int waktuLoading = 1000;

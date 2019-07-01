@@ -3,26 +3,25 @@ package com.qtasnim.qhopes.navigation.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.qtasnim.qhopes.MenuHariIniFragment;
-import com.qtasnim.qhopes.NewsFragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.SpesialisFragment;
 import com.qtasnim.qhopes.activities.MainActivity;
+import com.qtasnim.qhopes.activities.MenuHariIniActivity;
+import com.qtasnim.qhopes.fragments.MenuInfoFragment;
 import com.qtasnim.qhopes.fragments.MenuKontakFragment;
 import com.qtasnim.qhopes.fragments.MingguanFragment;
-import com.qtasnim.qhopes.fragments.MenuInfoFragment;
+import com.qtasnim.qhopes.fragments.NewsFragment;
+import com.qtasnim.qhopes.fragments.SpesialisFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -43,8 +42,12 @@ public class HomeNavFragment extends Fragment {
     }
 
     private void setActionBar(){
-        ((MainActivity) Objects.requireNonNull(getActivity()))
-                .setActionBarTitle(getString(R.string.title_beranda));
+//        ((MainActivity) Objects.requireNonNull(getActivity()))
+//                .setActionBarTitle(getString(R.string.title_beranda));
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity()))
+                .getSupportActionBar()).hide();
+
+
     }
 
     @Override
@@ -83,15 +86,14 @@ public class HomeNavFragment extends Fragment {
 
     public void btn_day_click(){
         btn_day.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 //   Intent i=new Intent(getApplicationContext(), viewinfoday.class);//target = nama class
                 //     startActivity(i);
 
-//                MenuHariIniFragment fm =  new MenuHariIniFragment();
+//                MenuHariIniActivity fm =  new MenuHariIniActivity();
 
-                Intent intent = new Intent(getActivity(), MenuHariIniFragment.class);
+                Intent intent = new Intent(getActivity(), MenuHariIniActivity.class);
                 startActivity(intent);
 
 

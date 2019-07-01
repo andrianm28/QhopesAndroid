@@ -1,22 +1,26 @@
 package com.qtasnim.qhopes.activities;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.qtasnim.qhopes.BottomNavigationViewHelper;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.misc.BottomNavigationViewHelper;
 import com.qtasnim.qhopes.navigation.fragments.DiagnosisNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.HomeNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.MyappointmentNavFragment;
@@ -28,8 +32,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
-    MenuItem item;
-
+    Dialog dialog;
 
 
 
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.frameLayout,fm2 );
                     fragmentTransaction2.commit();
-
                     return  true;
                 case R.id.navigation_bookmark:
                     DiagnosisNavFragment fm3 =  new DiagnosisNavFragment();
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        centerTitle();
 //        getSupportActionBar().setTitle("Home");
-        fab=(FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fabOnclick();
         BottomNavigationView navigation = findViewById(R.id.navigation);
 //        MenuItem itemPendaftaran = findViewById(R.id.navigation_pendaftaran);
@@ -171,10 +173,29 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PendaftaranNavFragment fm =  new PendaftaranNavFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm );
-                fragmentTransaction.commit();
+                Button mLogin;
+                EditText mMedRek;
+                dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.view_dialog_pendaftaran);
+                mLogin = dialog.findViewById(R.id.btn_login_pendaftaran);
+                mLogin.setOnClickListener(new View.OnClickListener(){
+                    public void onClick (View v){
+                        PendaftaranNavFragment fm =  new PendaftaranNavFragment();
+                        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frameLayout,fm );
+                        fragmentTransaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setCancelable(true);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+
+                    }
+                });
+                dialog.show();
             }
         });
     }

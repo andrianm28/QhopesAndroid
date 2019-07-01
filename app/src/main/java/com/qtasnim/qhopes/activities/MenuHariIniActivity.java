@@ -1,19 +1,21 @@
-package com.qtasnim.qhopes;
+package com.qtasnim.qhopes.activities;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.qtasnim.qhopes.adapters.MenuHariiniAdapter2;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.adapters.MenuHariiniAdapter;
 import com.qtasnim.qhopes.models.MenuHariiniModel;
 
 import java.text.SimpleDateFormat;
@@ -23,7 +25,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 
-public class MenuHariIniFragment extends AppCompatActivity {
+public class MenuHariIniActivity extends AppCompatActivity {
 
     private ArrayList<MenuHariiniModel> mModelData = new ArrayList<>();
 
@@ -43,7 +45,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
 
     private void setDialog(MenuHariiniModel currentModel) {
 
-        final Dialog mDialog = new Dialog(MenuHariIniFragment.this);
+        final Dialog mDialog = new Dialog(MenuHariIniActivity.this);
         mDialog.setContentView(R.layout.view_dialog_menu_hariini);
 
         TextView mDialogPoliklinik = mDialog.findViewById(R.id.tv_dialog_poliklinik);
@@ -75,7 +77,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: set intent jumpactivity to pendaftaran activity form
-//                Intent jumpActivity = new Intent(MenuHariIniFragment.this, PendaftaranNavFragment.class);
+//                Intent jumpActivity = new Intent(MenuHariIniActivity.this, PendaftaranNavFragment.class);
 //                startActivity(jumpActivity);
 //                finish();
             }
@@ -96,7 +98,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
     private void setRecyclerView() {
 
         RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_hariini);
-        MenuHariiniAdapter2 recyclerViewAdapter = new MenuHariiniAdapter2(mModelData);
+        MenuHariiniAdapter recyclerViewAdapter = new MenuHariiniAdapter(mModelData);
 
         initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -230,7 +232,7 @@ public class MenuHariIniFragment extends AppCompatActivity {
         mModelData.add(new MenuHariiniModel("Bedah Kepala Leher", "Sahudi, dr. Sp.BKL", "16:00", "0", "0", "0", "9"));
         mModelData.add(new MenuHariiniModel("Internist", "Eko Budi Santoso, dr Sp.PD", "18:00", "1", "0", "0", "15"));
         mModelData.add(new MenuHariiniModel("Jantung", "Mochammad Basori, Sp.JP", "18:30", "0", "0", "0", "25"));
-        MenuHariiniAdapter2 mAdapter = new MenuHariiniAdapter2(mModelData);
+        MenuHariiniAdapter mAdapter = new MenuHariiniAdapter(mModelData);
 
         mAdapter.notifyDataSetChanged();
     }

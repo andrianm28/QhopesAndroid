@@ -10,20 +10,23 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:text="Silahkan Masukan No NIP Anda"/>
-    <EditText
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:id="@+id/etx_nip_dokter"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="No NIP"
-        android:inputType="numberSigned"
-        android:autofillHints="" />
+        android:text="Silahkan Masukan No MedRek"/>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/InputTextWrap"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:hint="No Med Rek">
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/InputText"
+            android:drawableLeft="@drawable/ic_today_black_24dp"
+            android:focusedByDefault="false"
+            android:inputType="text"
+            android:id="@+id/input_login_pendaftaran"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:textColor="@android:color/primary_text_dark_nodisable"
         android:textStyle="bold"
-        android:id="@+id/btn_login_dokter"
+        android:id="@+id/btn_login_pendaftaran"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

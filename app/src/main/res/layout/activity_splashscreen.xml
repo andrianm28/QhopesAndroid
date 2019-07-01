@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qtasnim.qhopes.SplashscreenActivity"
+    tools:context="com.qtasnim.qhopes.activities.SplashscreenActivity"
     android:background="@color/colorPrimary"
     >
 

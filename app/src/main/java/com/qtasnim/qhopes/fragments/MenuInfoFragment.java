@@ -3,25 +3,18 @@ package com.qtasnim.qhopes.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.qtasnim.qhopes.R;
+import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MenuInfoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MenuInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MenuInfoFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,8 +76,6 @@ public class MenuInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 PendaftaranNavFragment fm = new PendaftaranNavFragment();
-
-
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout,fm);
                 fragmentTransaction.commit();

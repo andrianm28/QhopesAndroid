@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.qtasnim.qhopes.MenuHariIniFragment"
+    tools:context="com.qtasnim.qhopes.activities.MenuHariIniActivity"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -13,13 +13,13 @@
         android:layout_gravity="start"
         android:layout_margin="10dp"
         />
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:scrollbars="vertical"
         android:layout_height="match_parent"
         android:id="@+id/recycler_menu_hariini"
         >
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>
 
@@ -28,7 +28,7 @@
     <!--xmlns:tools="http://schemas.android.com/tools"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
-    <!--tools:context="com.qtasnim.qhopes.MenuHariIniFragment">-->
+    <!--tools:context="com.qtasnim.qhopes.activities.MenuHariIniActivity">-->
 
     <!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
     <!--<LinearLayout-->
