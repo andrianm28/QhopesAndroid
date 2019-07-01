@@ -2,11 +2,13 @@ package com.qtasnim.qhopes.navigation.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -14,19 +16,11 @@ import androidx.fragment.app.Fragment;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.activities.MainActivity;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PendaftaranNavFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PendaftaranNavFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PendaftaranNavFragment extends Fragment {
 
     Dialog dialog;
     private OnFragmentInteractionListener mListener;
+    Button mConfirm;
 
     public PendaftaranNavFragment() {
         // Required empty public constructor
@@ -42,21 +36,57 @@ public class PendaftaranNavFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
+        View rootView = inflater.inflate(R.layout.fragment_nav_pendaftaran, container, false);
+
         // Set title bar
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         ((MainActivity) getActivity())
                 .setActionBarTitle(getString(R.string.title_pendaftaran));
-        // Inflate the layout for this fragment
 
 
-        return inflater.inflate(R.layout.fragment_nav_pendaftaran, container, false);
+        mConfirm = rootView.findViewById(R.id.btn_confirm_pendaftaran);
+        mConfirmOnClick();
+
+
+        return rootView;
     }
-    // TODO: Rename method, update argument and hook method into UI event
+
+    private void mConfirmOnClick() {
+        mConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button mBtnOke;
+                dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.view_dialog_confirm_pendaftaran);
+                mBtnOke = dialog.findViewById(R.id.btn_oke_pendaftaran);
+                mBtnOke.setOnClickListener(new View.OnClickListener(){
+                    public void onClick (View v){
+
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setCancelable(true);
+                dialog.setCanceledOnTouchOutside(true);
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+
+                    }
+                });
+                dialog.show();
+            }
+        });
+    }
+
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -79,16 +109,6 @@ public class PendaftaranNavFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

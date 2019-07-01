@@ -17,7 +17,7 @@ import com.qtasnim.qhopes.R;
 public class PilihanPeranActivity extends AppCompatActivity {
 
     private Button mBtnDokter,mBtnPasien,mBtnLoginDokter;
-    private EditText mEtxNipDokter;
+    private EditText mInputNipDokter;
     private Dialog dialog;
 
     @Override
@@ -52,7 +52,7 @@ public class PilihanPeranActivity extends AppCompatActivity {
     private void DokterDialog(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.view_dialog_splashscreen);
-        mEtxNipDokter = dialog.findViewById(R.id.etx_nip_dokter);
+        mInputNipDokter = dialog.findViewById(R.id.input_nip_dokter);
         mBtnLoginDokter = dialog.findViewById(R.id.btn_login_dokter);
         mBtnPasien.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
