@@ -8,16 +8,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.models.AppointmentModel;
+import com.qtasnim.qhopes.models.PastAppointmentModel;
 
 import java.util.ArrayList;
 
-public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.MyViewHolder> {
+public class PastAppointmentAdapter extends RecyclerView.Adapter<PastAppointmentAdapter.MyViewHolder> {
 
-    private ArrayList<AppointmentModel> mAppointmentModel;
+    private ArrayList<PastAppointmentModel> mAppointmentModel;
     private View.OnClickListener mOnItemClickListener;
 
-    public AppointmentAdapter(ArrayList<AppointmentModel> mAppointmentModel) {
+    public PastAppointmentAdapter(ArrayList<PastAppointmentModel> mAppointmentModel) {
         this.mAppointmentModel = mAppointmentModel;
     }
 
@@ -30,7 +30,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        AppointmentModel currentModel = mAppointmentModel.get(position);
+        PastAppointmentModel currentModel = mAppointmentModel.get(position);
         holder.mNamaPoliklinik.setText(currentModel.getPoliklinik());
         holder.mNamaDokter.setText(currentModel.getDokter());
         holder.mTanggal.setText(currentModel.getTanggal());

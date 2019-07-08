@@ -44,7 +44,7 @@ public class PendaftaranNavFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View rootView = inflater.inflate(R.layout.fragment_nav_pendaftaran, container, false);
+        View rootView = inflater.inflate(R.layout.activity_pendaftaran_form, container, false);
 
         // Set title bar
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();

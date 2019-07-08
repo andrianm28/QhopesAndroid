@@ -1,30 +1,33 @@
-package com.qtasnim.qhopes.fragments;
+package com.qtasnim.qhopes.activities;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.adapters.UpcomingAppointmentAdapter;
-import com.qtasnim.qhopes.models.UpcomingAppointmentModel;
+import com.qtasnim.qhopes.adapters.BeritaAdapter;
+import com.qtasnim.qhopes.models.BeritaModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 
-public class UpcomingAppointmentFragment extends Fragment {
+public class MenuBeritaActivity extends AppCompatActivity {
 
-    private ArrayList<UpcomingAppointmentModel> mModelData = new ArrayList<>();
+    private ArrayList<BeritaModel> mModelData = new ArrayList<>();
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
@@ -34,16 +37,15 @@ public class UpcomingAppointmentFragment extends Fragment {
             // viewHolder.getItemId();
             // viewHolder.getItemViewType();
             // viewHolder.itemView;
-            UpcomingAppointmentModel mAppointmentModel = mModelData.get(position);
-            setDialog(mAppointmentModel);
+            BeritaModel mBeritaModel = mModelData.get(position);
+            setDialog(mBeritaModel);
 
         }
     };
 
+    private void setDialog(BeritaModel currentModel) {
 
-    private void setDialog(UpcomingAppointmentModel currentModel) {
-
-        final Dialog mDialog = new Dialog(getContext());
+        final Dialog mDialog = new Dialog(MenuBeritaActivity.this);
         mDialog.setContentView(R.layout.view_dialog_menu_hariini);
 
         TextView mDialogPoliklinik = mDialog.findViewById(R.id.tv_dialog_poliklinik);
@@ -53,6 +55,7 @@ public class UpcomingAppointmentFragment extends Fragment {
         TextView mCheckin = mDialog.findViewById(R.id.tv_dialog_checkin_pasien);
         TextView mPasienTerlayani = mDialog.findViewById(R.id.tv_dialog_pasien_terlayani);
         TextView mKuotaPasien = mDialog.findViewById(R.id.tv_dialog_kuota_pasien);
+
 
         Button mBtnDialogKembali = mDialog.findViewById(R.id.btn_dialog_kembali);
         Button mBtnDialogDaftar = mDialog.findViewById(R.id.btn_dialog_daftar);
@@ -77,20 +80,24 @@ public class UpcomingAppointmentFragment extends Fragment {
 
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.view_item_nav_appointment, container, false);
-        View vRV = inflater.inflate(R.layout.fragment_upcoming_appointment,container,true);
+    private void getCurrentTime() {
+        TextView tvCurrentDateTime = findViewById(R.id.tv_curent_update_menu_hariini);
+        tvCurrentDateTime.setText(String.format("Update : %s", new SimpleDateFormat(
+                "EEEE, dd MMM yyyy - hh:mm",
+                new Locale("in", "ID"))
+                .format(new Date())));
+    }
 
-        RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_upcoming_appointment);
-        UpcomingAppointmentAdapter recyclerViewAdapter = new UpcomingAppointmentAdapter(mModelData);
+    private void setRecyclerView() {
+
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_berita);
+        BeritaAdapter recyclerViewAdapter = new BeritaAdapter(mModelData);
+
         initData();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.setOnItemClickListener(onItemClickListener);
 
-        return rootView;
     }
 
 //    private void setDynamiceRecycler(){
@@ -144,7 +151,33 @@ public class UpcomingAppointmentFragment extends Fragment {
 ////        // Attach the helper to the RecyclerView.
 ////        helper.attachToRecyclerView(mRecyclerView);
 //    }
-    
+
+    private void setActionBar() {
+        Objects.requireNonNull(getSupportActionBar()).show();
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.tbtn_menu_berita));
+        ArrayList<View> textViews = new ArrayList<>();
+        getWindow().getDecorView().findViewsWithText(textViews, getTitle(), View.FIND_VIEWS_WITH_TEXT);
+        if (textViews.size() > 0) {
+            AppCompatTextView appCompatTextView = null;
+            if (textViews.size() == 1) {
+                appCompatTextView = (AppCompatTextView) textViews.get(0);
+            } else {
+                for (View v : textViews) {
+                    if (v.getParent() instanceof Toolbar) {
+                        appCompatTextView = (AppCompatTextView) v;
+                        break;
+                    }
+                }
+            }
+            if (appCompatTextView != null) {
+                ViewGroup.LayoutParams params = appCompatTextView.getLayoutParams();
+                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                appCompatTextView.setLayoutParams(params);
+                appCompatTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            }
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //                // Create new fragment and transaction
@@ -165,18 +198,22 @@ public class UpcomingAppointmentFragment extends Fragment {
     }
 
     private void initData() {
-        mModelData.add(new UpcomingAppointmentModel("Fisioteraphy","Ayana,dr SP","12 May 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Internist","Rizki dr, SpI","8 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Gigi","Duwi dr, SpG","13 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Anak","Rani dr, SpA","8 July 2019","09:10"));
-        UpcomingAppointmentAdapter mAdapter = new UpcomingAppointmentAdapter(mModelData);
+        mModelData.add(new BeritaModel("Pelatihan Pemadaman Kebakaran","15/05/2019","foto_berita","RS. Bhakti Husada Cikarang melakukan pelatihan pemadam kebakaran terhadap semua staff dan karyawan yang dilaksanakn setiap tahun dan bekerja sama dengan tim pemadam kebakaran Kab. Bekasi"));
+        mModelData.add(new BeritaModel("ISPA","10/10/17","foto_berita2","ISPA adalah kepanjanngan dari Infeksi Saluran Pernafasan Akut yang berarti terjadinya infeksi yang parah pada bagian sinus, tenggorokan, saluran udara, atau paru-paru. Kondisi ini menyebabkan fungsi pernafasan menjadi terganggu. Jika tidak segera ditangani, ISPA dapat menyebar ke seluruh sistem pernafasan tubuh bahkan dapat menyebabkan kematian."));
+        BeritaAdapter mAdapter = new BeritaAdapter(mModelData);
 
         mAdapter.notifyDataSetChanged();
     }
     
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private void setContent() {
+        setActionBar();
+        setRecyclerView();
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu_berita);
+        setContent();
     }
 }

@@ -1,6 +1,7 @@
 package com.qtasnim.qhopes.activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,7 @@ import java.util.Objects;
 public class MenuHariIniActivity extends AppCompatActivity {
 
     private ArrayList<MenuHariiniModel> mModelData = new ArrayList<>();
+    Dialog dialog;
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
@@ -76,17 +78,13 @@ public class MenuHariIniActivity extends AppCompatActivity {
         mBtnDialogDaftar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: set intent jumpactivity to pendaftaran activity form
-//                Intent jumpActivity = new Intent(MenuHariIniActivity.this, PendaftaranNavFragment.class);
-//                startActivity(jumpActivity);
-//                finish();
+                Intent jumpActivity = new Intent(MenuHariIniActivity.this, NavPendaftaranFormActivity.class);
+                startActivity(jumpActivity);
             }
         });
 
         mDialog.show();
-
     }
-
     private void getCurrentTime() {
         TextView tvCurrentDateTime = findViewById(R.id.tv_curent_update_menu_hariini);
         tvCurrentDateTime.setText(String.format("Update : %s", new SimpleDateFormat(
@@ -162,7 +160,6 @@ public class MenuHariIniActivity extends AppCompatActivity {
     private void setActionBar() {
         Objects.requireNonNull(getSupportActionBar()).show();
         Objects.requireNonNull(getSupportActionBar()).setTitle(getString(R.string.title_menu_hariini));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ArrayList<View> textViews = new ArrayList<>();
         getWindow().getDecorView().findViewsWithText(textViews, getTitle(), View.FIND_VIEWS_WITH_TEXT);
         if (textViews.size() > 0) {

@@ -16,15 +16,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.adapters.UpcomingAppointmentAdapter;
-import com.qtasnim.qhopes.models.UpcomingAppointmentModel;
+import com.qtasnim.qhopes.adapters.BeritaAdapter;
+import com.qtasnim.qhopes.models.BeritaModel;
 
 import java.util.ArrayList;
 
 
-public class UpcomingAppointmentFragment extends Fragment {
+public class MenuBeritaFragment extends Fragment {
 
-    private ArrayList<UpcomingAppointmentModel> mModelData = new ArrayList<>();
+    private ArrayList<BeritaModel> mModelData = new ArrayList<>();
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
@@ -34,14 +34,14 @@ public class UpcomingAppointmentFragment extends Fragment {
             // viewHolder.getItemId();
             // viewHolder.getItemViewType();
             // viewHolder.itemView;
-            UpcomingAppointmentModel mAppointmentModel = mModelData.get(position);
+            BeritaModel mAppointmentModel = mModelData.get(position);
             setDialog(mAppointmentModel);
 
         }
     };
 
 
-    private void setDialog(UpcomingAppointmentModel currentModel) {
+    private void setDialog(BeritaModel currentModel) {
 
         final Dialog mDialog = new Dialog(getContext());
         mDialog.setContentView(R.layout.view_dialog_menu_hariini);
@@ -80,15 +80,16 @@ public class UpcomingAppointmentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.view_item_nav_appointment, container, false);
-        View vRV = inflater.inflate(R.layout.fragment_upcoming_appointment,container,true);
+        View rootView = inflater.inflate(R.layout.view_item_menu_berita, container, false);
+        View vRV = inflater.inflate(R.layout.fragment_menu_berita,container,false);
 
-        RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_upcoming_appointment);
-        UpcomingAppointmentAdapter recyclerViewAdapter = new UpcomingAppointmentAdapter(mModelData);
+        RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_menu_berita);
+        BeritaAdapter recyclerViewAdapter = new BeritaAdapter(mModelData);
         initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.setOnItemClickListener(onItemClickListener);
+
 
         return rootView;
     }
@@ -144,7 +145,7 @@ public class UpcomingAppointmentFragment extends Fragment {
 ////        // Attach the helper to the RecyclerView.
 ////        helper.attachToRecyclerView(mRecyclerView);
 //    }
-    
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //                // Create new fragment and transaction
@@ -165,15 +166,13 @@ public class UpcomingAppointmentFragment extends Fragment {
     }
 
     private void initData() {
-        mModelData.add(new UpcomingAppointmentModel("Fisioteraphy","Ayana,dr SP","12 May 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Internist","Rizki dr, SpI","8 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Gigi","Duwi dr, SpG","13 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Anak","Rani dr, SpA","8 July 2019","09:10"));
-        UpcomingAppointmentAdapter mAdapter = new UpcomingAppointmentAdapter(mModelData);
+        mModelData.add(new BeritaModel("Pelatihan Pemadaman Kebakaran","15/05/2019","foto_berita","RS. Bhakti Husada Cikarang melakukan pelatihan pemadam kebakaran terhadap semua staff dan karyawan yang dilaksanakn setiap tahun dan bekerja sama dengan tim pemadam kebakaran Kab. Bekasi"));
+        mModelData.add(new BeritaModel("ISPA","10/10/17","foto_berita2","ISPA adalah kepanjanngan dari Infeksi Saluran Pernafasan Akut yang berarti terjadinya infeksi yang parah pada bagian sinus, tenggorokan, saluran udara, atau paru-paru. Kondisi ini menyebabkan fungsi pernafasan menjadi terganggu. Jika tidak segera ditangani, ISPA dapat menyebar ke seluruh sistem pernafasan tubuh bahkan dapat menyebabkan kematian."));
+        BeritaAdapter mAdapter = new BeritaAdapter(mModelData);
 
         mAdapter.notifyDataSetChanged();
     }
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

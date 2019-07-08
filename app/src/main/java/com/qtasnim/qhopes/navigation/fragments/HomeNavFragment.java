@@ -16,11 +16,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.activities.MainActivity;
+import com.qtasnim.qhopes.activities.MenuBeritaActivity;
 import com.qtasnim.qhopes.activities.MenuHariIniActivity;
+import com.qtasnim.qhopes.activities.MenuInfoActivity;
+import com.qtasnim.qhopes.activities.MenuKontakActivity;
 import com.qtasnim.qhopes.fragments.MenuInfoFragment;
-import com.qtasnim.qhopes.fragments.MenuKontakFragment;
 import com.qtasnim.qhopes.fragments.MingguanFragment;
-import com.qtasnim.qhopes.fragments.NewsFragment;
 import com.qtasnim.qhopes.fragments.SpesialisFragment;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -42,12 +43,8 @@ public class HomeNavFragment extends Fragment {
     }
 
     private void setActionBar(){
-//        ((MainActivity) Objects.requireNonNull(getActivity()))
-//                .setActionBarTitle(getString(R.string.title_beranda));
-        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity()))
-                .getSupportActionBar()).hide();
-
-
+        ((MainActivity) Objects.requireNonNull(getActivity()))
+                .setActionBarTitle(getString(R.string.title_beranda));
     }
 
     @Override
@@ -70,12 +67,8 @@ public class HomeNavFragment extends Fragment {
         mBtnMenuMingguini_click();
         mBtnMenuBerita = rootView.findViewById(R.id.btn_menu_berita);
         mBtnMenuBerita_click();
-        mBtnMenuSpesialis = rootView.findViewById(R.id.btn_menu_berita);
-        mBtnMenuSpesialis_click();
-//        mBtnDaftar = rootView.findViewById(R.id.mBtnDaftar);
-//        mBtnDaftar_click();
         btn_menu_info = rootView.findViewById(R.id.btn_menu_info);
-        btn_menu_info_click();
+        btnInfoOnClick();
         mBtnMenuKontak = rootView.findViewById(R.id.btn_menu_kontak);
         btnMenuKontakClicked();
 
@@ -126,12 +119,9 @@ public class HomeNavFragment extends Fragment {
         mBtnMenuBerita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewsFragment fm =  new NewsFragment();
 
-
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(), MenuBeritaActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -173,27 +163,22 @@ public class HomeNavFragment extends Fragment {
         mBtnMenuKontak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MenuKontakFragment fm = new MenuKontakFragment();
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(), MenuKontakActivity.class);
+                startActivity(intent);
 
             }
         });
     }
 
 
-    public void btn_menu_info_click()
+    public void btnInfoOnClick()
     {
         btn_menu_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MenuInfoFragment fm = new MenuInfoFragment();
-
-
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
+                Intent jumpActivity = new Intent(getContext(), MenuInfoActivity.class);
+                startActivity(jumpActivity);
 
             }
         });

@@ -15,17 +15,18 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.activities.MainActivity;
+import com.qtasnim.qhopes.fragments.PastAppointmentFragment;
 import com.qtasnim.qhopes.fragments.UpcomingAppointmentFragment;
 
-public class MyappointmentNavFragment extends Fragment {
+public class AppointmentNavFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
-    public MyappointmentNavFragment() {
+    public AppointmentNavFragment() {
         // Required empty public constructor
     }
 
-    public static MyappointmentNavFragment newInstance(String param1, String param2) {
-        MyappointmentNavFragment fragment = new MyappointmentNavFragment();
+    public static AppointmentNavFragment newInstance(String param1, String param2) {
+        AppointmentNavFragment fragment = new AppointmentNavFragment();
         Bundle args = new Bundle();
         return fragment;
     }
@@ -45,6 +46,12 @@ public class MyappointmentNavFragment extends Fragment {
         ((MainActivity) getActivity())
                 .setActionBarTitle(getString(R.string.title_myappointment));
 
+        UpcomingAppointmentFragment fragment2 = new UpcomingAppointmentFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_appointment, fragment2);
+        fragmentTransaction.commit();
+
         ToggleButton mUpcoming = rootView.findViewById(R.id.btn_upcoming_appointment);
 
         mUpcoming.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +65,23 @@ public class MyappointmentNavFragment extends Fragment {
 
             }
         });
+
+
+        ToggleButton mPast= rootView.findViewById(R.id.btn_past_appointment);
+
+        mPast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PastAppointmentFragment fragment2 = new PastAppointmentFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frame_appointment, fragment2);
+                fragmentTransaction.commit();
+
+            }
+        });
+
+
 
         return rootView;
     }

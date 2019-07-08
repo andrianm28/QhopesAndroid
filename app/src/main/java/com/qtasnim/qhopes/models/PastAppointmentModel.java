@@ -1,6 +1,6 @@
 package com.qtasnim.qhopes.models;
 
-public class AppointmentModel {
+public class PastAppointmentModel {
 
     String
         poliklinik,
@@ -9,7 +9,7 @@ public class AppointmentModel {
         jam;
 
 
-    public AppointmentModel(String poliklinik, String dokter, String tanggal, String jam){
+    public PastAppointmentModel(String poliklinik, String dokter, String tanggal, String jam){
         this.poliklinik = poliklinik;
         this.dokter = dokter;
         this.tanggal = tanggal;

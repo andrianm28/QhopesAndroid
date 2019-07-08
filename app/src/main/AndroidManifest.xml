@@ -22,14 +22,18 @@
         </activity>
         <activity android:name="com.qtasnim.qhopes.activities.PilihanPeranActivity">
         </activity>
-        <activity
-            android:name="com.qtasnim.qhopes.activities.MainActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.qtasnim.qhopes.activities.MainActivity" />
+        <activity android:name="com.qtasnim.qhopes.activities.MainActivity"
+                android:theme="@style/AppTheme">
         </activity>
         <activity android:name="com.qtasnim.qhopes.activities.MenuHariIniActivity">
+        </activity>
+        <activity android:name="com.qtasnim.qhopes.activities.MenuBeritaActivity">
+        </activity>
+        <activity android:name="com.qtasnim.qhopes.activities.MenuKontakActivity">
+        </activity>
+        <activity android:name="com.qtasnim.qhopes.activities.NavPendaftaranFormActivity">
+        </activity>
+        <activity android:name="com.qtasnim.qhopes.activities.MenuInfoActivity">
         </activity>
     </application>
 

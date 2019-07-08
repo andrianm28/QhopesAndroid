@@ -20,7 +20,7 @@
             android:drawableLeft="@drawable/ic_today_black_24dp"
             android:focusedByDefault="false"
             android:inputType="text"
-            android:id="@+id/input_login_pendaftaran"/>
+            android:id="@+id/input_medrek"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         style="@style/Widget.AppCompat.Button.Borderless.Colored"

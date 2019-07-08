@@ -113,7 +113,6 @@ public class ProfilNavFragment extends Fragment {
         View rootView =inflater.inflate(R.layout.fragment_nav_profil, container, false);
         ((MainActivity) getActivity())
                 .setActionBarTitle(getString(R.string.title_akun));
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         return rootView;
     }
 

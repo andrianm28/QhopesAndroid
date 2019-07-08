@@ -3,38 +3,34 @@ package com.qtasnim.qhopes.activities;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.misc.BottomNavigationViewHelper;
+import com.qtasnim.qhopes.models.OtentifikasiModel;
+import com.qtasnim.qhopes.navigation.fragments.AppointmentNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.DiagnosisNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.HomeNavFragment;
-import com.qtasnim.qhopes.navigation.fragments.MyappointmentNavFragment;
-import com.qtasnim.qhopes.navigation.fragments.PendaftaranNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.ProfilNavFragment;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private ArrayList<OtentifikasiModel> mModelData = new ArrayList<>();
     FloatingActionButton fab;
     Dialog dialog;
-
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -42,28 +38,26 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                 //   mTextMessage.setText(R.string.title_home);
                     HomeNavFragment fm1 =  new HomeNavFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.frameLayout,fm1 );
                     fragmentTransaction1.commit();
                     return true;
-                case R.id.navigation_riwayat:
-                    MyappointmentNavFragment fm2 =  new MyappointmentNavFragment();
+                case R.id.navigation_appointment:
+                    AppointmentNavFragment fm2 =  new AppointmentNavFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.frameLayout,fm2 );
                     fragmentTransaction2.commit();
                     return  true;
-                case R.id.navigation_bookmark:
+                case R.id.navigation_diagnosis:
                     DiagnosisNavFragment fm3 =  new DiagnosisNavFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.frameLayout,fm3 );
                     fragmentTransaction3.commit();
                     return true;
-                case R.id.navigation_akun:
+                case R.id.navigation_profil:
                     ProfilNavFragment fm4 =  new ProfilNavFragment();
                     FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction4.replace(R.id.frameLayout,fm4 );
@@ -73,29 +67,25 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_main);
-//        centerTitle();
-//        getSupportActionBar().setTitle("Home");
+        initData();
         fab = findViewById(R.id.fab);
-        fabOnclick();
+        fabOnClick();
         BottomNavigationView navigation = findViewById(R.id.navigation);
-//        MenuItem itemPendaftaran = findViewById(R.id.navigation_pendaftaran);
-//        itemPendaftaran.setEnabled(false);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
+        HomeNavFragment fm =  new HomeNavFragment();
 
-
-
-         HomeNavFragment fm =  new HomeNavFragment();
-
-           FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-           fragmentTransaction.replace(R.id.frameLayout,fm );
-            fragmentTransaction.commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,fm );
+        fragmentTransaction.commit();
+    }
+    private void initData() {
+        mModelData.add(new OtentifikasiModel(12345,12345));
     }
 
     @Override
@@ -108,52 +98,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
     }
 
-    private void centerTitle() {
-        ArrayList<View> textViews = new ArrayList<>();
-
-        getWindow().getDecorView().findViewsWithText(textViews, getTitle(), View.FIND_VIEWS_WITH_TEXT);
-
-        if(textViews.size() > 0) {
-            AppCompatTextView appCompatTextView = null;
-            if(textViews.size() == 1) {
-                appCompatTextView = (AppCompatTextView) textViews.get(0);
-            } else {
-                for(View v : textViews) {
-                    if(v.getParent() instanceof Toolbar) {
-                        appCompatTextView = (AppCompatTextView) v;
-                        break;
-                    }
-                }
-            }
-
-            if(appCompatTextView != null) {
-                ViewGroup.LayoutParams params = appCompatTextView.getLayoutParams();
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                appCompatTextView.setLayoutParams(params);
-                appCompatTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            }
-        }
-    }
-
-
-
     public void onBackPressed() {
        // moveTaskToBack(false);
-        showInputDialog();
+        showExitAlert();
     }
 
-    protected void showInputDialog() {
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+    protected void showExitAlert() {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
         alertDialogBuilder.setTitle("Apakah anda yakin mau keluar ?");
-        // setup a dialog window
-        alertDialogBuilder.setCancelable(false)
+        alertDialogBuilder.setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //    resultText.setText("Hello, " + editText.getText());
-
-                       // Intent pilih =new Intent(choice.this, MainActivity.class);
-                   //     startActivity(pilih);
                         finish();
                     }
                 })
@@ -162,40 +117,18 @@ public class MainActivity extends AppCompatActivity {
                                 dialog.cancel();
                             }
                         });
-
-        // create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
 
-
-    public void fabOnclick() {
+    public void fabOnClick() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button mLogin;
-                EditText mMedRek;
-                dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.view_dialog_pendaftaran);
-                mLogin = dialog.findViewById(R.id.btn_login_pendaftaran);
-                mLogin.setOnClickListener(new View.OnClickListener(){
-                    public void onClick (View v){
-                        PendaftaranNavFragment fm =  new PendaftaranNavFragment();
-                        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frameLayout,fm );
-                        fragmentTransaction.commit();
-                        dialog.dismiss();
-                    }
-                });
-                dialog.setCancelable(true);
-                dialog.setCanceledOnTouchOutside(true);
-                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
 
-                    }
-                });
-                dialog.show();
+                Intent intent = new Intent(MainActivity.this, NavPendaftaranFormActivity.class);
+                startActivity(intent);
+
             }
         });
     }

@@ -16,15 +16,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qtasnim.qhopes.R;
-import com.qtasnim.qhopes.adapters.UpcomingAppointmentAdapter;
-import com.qtasnim.qhopes.models.UpcomingAppointmentModel;
+import com.qtasnim.qhopes.adapters.PastAppointmentAdapter;
+import com.qtasnim.qhopes.models.PastAppointmentModel;
 
 import java.util.ArrayList;
 
 
-public class UpcomingAppointmentFragment extends Fragment {
+public class PastAppointmentFragment extends Fragment {
 
-    private ArrayList<UpcomingAppointmentModel> mModelData = new ArrayList<>();
+    private ArrayList<PastAppointmentModel> mModelData = new ArrayList<>();
 
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
         @Override
@@ -34,14 +34,14 @@ public class UpcomingAppointmentFragment extends Fragment {
             // viewHolder.getItemId();
             // viewHolder.getItemViewType();
             // viewHolder.itemView;
-            UpcomingAppointmentModel mAppointmentModel = mModelData.get(position);
+            PastAppointmentModel mAppointmentModel = mModelData.get(position);
             setDialog(mAppointmentModel);
 
         }
     };
 
 
-    private void setDialog(UpcomingAppointmentModel currentModel) {
+    private void setDialog(PastAppointmentModel currentModel) {
 
         final Dialog mDialog = new Dialog(getContext());
         mDialog.setContentView(R.layout.view_dialog_menu_hariini);
@@ -84,7 +84,7 @@ public class UpcomingAppointmentFragment extends Fragment {
         View vRV = inflater.inflate(R.layout.fragment_upcoming_appointment,container,true);
 
         RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_upcoming_appointment);
-        UpcomingAppointmentAdapter recyclerViewAdapter = new UpcomingAppointmentAdapter(mModelData);
+        PastAppointmentAdapter recyclerViewAdapter = new PastAppointmentAdapter(mModelData);
         initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(recyclerViewAdapter);
@@ -165,11 +165,9 @@ public class UpcomingAppointmentFragment extends Fragment {
     }
 
     private void initData() {
-        mModelData.add(new UpcomingAppointmentModel("Fisioteraphy","Ayana,dr SP","12 May 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Internist","Rizki dr, SpI","8 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Gigi","Duwi dr, SpG","13 July 2019","09:10"));
-        mModelData.add(new UpcomingAppointmentModel("Dokter Anak","Rani dr, SpA","8 July 2019","09:10"));
-        UpcomingAppointmentAdapter mAdapter = new UpcomingAppointmentAdapter(mModelData);
+        mModelData.add(new PastAppointmentModel("Dokter Gigi","Duwi dr, SpG","13 July 2019","09:10"));
+        mModelData.add(new PastAppointmentModel("Dokter Anak","Rani dr, SpA","8 July 2019","09:10"));
+        PastAppointmentAdapter mAdapter = new PastAppointmentAdapter(mModelData);
 
         mAdapter.notifyDataSetChanged();
     }
