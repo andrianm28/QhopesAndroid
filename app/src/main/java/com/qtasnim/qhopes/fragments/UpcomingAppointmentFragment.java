@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qtasnim.qhopes.R;
@@ -80,6 +81,15 @@ public class UpcomingAppointmentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.view_item_nav_appointment, container, false);
+        View vRV = inflater.inflate(R.layout.fragment_upcoming_appointment,container,true);
+
+        RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_upcoming_appointment);
+        AppointmentAdapter recyclerViewAdapter = new AppointmentAdapter(mModelData);
+        initData();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setOnItemClickListener(onItemClickListener);
+
         return rootView;
     }
 
@@ -156,6 +166,8 @@ public class UpcomingAppointmentFragment extends Fragment {
 
     private void initData() {
         mModelData.add(new AppointmentModel("Fisioteraphy","Ayana,dr SP","12 May 2019","09:10"));
+        mModelData.add(new AppointmentModel("Internist","Rizki dr, SpI","8 July 2019","09:10"));
+        mModelData.add(new AppointmentModel("Dokter Gigi","Duwi dr, SpG","13 July 2019","09:10"));
         AppointmentAdapter mAdapter = new AppointmentAdapter(mModelData);
 
         mAdapter.notifyDataSetChanged();
@@ -164,14 +176,6 @@ public class UpcomingAppointmentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        View rootView = inflater.inflate(R.layout.fragment_upcoming_appointment,     container, false);
-//        RecyclerView mRecyclerView = rootView.findViewById(R.id.recycler_upcoming_appointment);
-//        AppointmentAdapter recyclerViewAdapter = new AppointmentAdapter(mModelData);
-//
-//        initData();
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.setAdapter(recyclerViewAdapter);
-//        recyclerViewAdapter.setOnItemClickListener(onItemClickListener);
-        
+
     }
 }

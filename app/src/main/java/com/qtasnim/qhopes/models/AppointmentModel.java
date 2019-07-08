@@ -1,6 +1,7 @@
 package com.qtasnim.qhopes.models;
 
 public class AppointmentModel {
+
     String
         poliklinik,
         dokter,
