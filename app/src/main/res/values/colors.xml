@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#0ADB60</color>
     <color name="colorPrimaryDark">@color/md_green_300</color>
-    <color name="colorAccent">@color/md_green_A100</color>
+    <color name="colorAccent">@color/colorPrimary</color>
 
     <!-- google's material design colours from http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
     <!-- https://gist.github.com/daniellevass/b0b8cfa773488e138037 -->
@@ -64,6 +64,7 @@
     <color name="md_blue_A200">#448AFF</color>
     <color name="md_blue_A400">#2979FF</color>
     <color name="md_blue_A700">#2962FF</color>
+    <color name="md_blue_linktext">#0000FF</color>
 
     <!-- light blue-->
     <color name="md_light_blue_50">#E1F5FE</color>

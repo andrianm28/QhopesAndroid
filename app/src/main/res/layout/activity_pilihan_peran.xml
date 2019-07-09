@@ -7,10 +7,11 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selamat Datang"
+        android:text="@string/landing_greeting"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:layout_marginTop="150dp"
@@ -18,46 +19,52 @@
         android:textStyle="bold"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logo_inverted"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        />
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Selamat Datang di Aplikasi QHopes"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:textSize="20sp"-->
+        <!--/>-->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selamat Datang di Aplikasi QHopes"
+        android:text="@string/role"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:layout_marginTop="50dp"
         android:textSize="20sp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Masuk sebagai: "
-        android:layout_gravity="center"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="50dp"
-        android:textSize="20sp"
-        />
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_dokter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dokter"
+        android:text="@string/dokter"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:layout_marginTop="50dp"
         />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_pasien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pasien"
+        android:text="@string/pasien"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
         android:layout_marginTop="20dp"
         />
-
-
 </LinearLayout>

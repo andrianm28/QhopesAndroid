@@ -12,14 +12,16 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.qtasnim.qhopes.R;
 
 public class PilihanPeranActivity extends AppCompatActivity {
 
-    private Button mBtnDokter,mBtnPasien,mBtnLoginDokter;
+    private Button mBtnDokter,mBtnPasien;
     private TextInputEditText mInputNipDokter;
     private Dialog dialog;
+    private MaterialButton mBtnLoginDokter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,10 +54,9 @@ public class PilihanPeranActivity extends AppCompatActivity {
     }
     private void DokterDialog(){
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.view_dialog_splashscreen);
-        mInputNipDokter = dialog.findViewById(R.id.input_nip_dokter);
+        dialog.setContentView(R.layout.view_dialog_dokter_form);
+        mInputNipDokter = dialog.findViewById(R.id.input_nip_dokter_form);
         mBtnLoginDokter = dialog.findViewById(R.id.btn_login_dokter);
-        mInputNipDokter = dialog.findViewById(R.id.input_nip_dokter);
         mBtnPasien.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 Intent jumpActivity= new Intent(PilihanPeranActivity.this, PilihanPeranActivity.class);
