@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.qtasnim.qhopes">
 
     <application
@@ -10,29 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.RegisterDokterActivity"></activity>
+        <activity android:name=".navigation.fragments.MenuSpesialisActivity" />
+        <activity android:name=".activities.MenuMingguiniActivity" />
         <activity
-            android:name="com.qtasnim.qhopes.activities.SplashscreenActivity"
+            android:name=".activities.SplashscreenActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.PilihanPeranActivity">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.MainActivity"
-                android:theme="@style/AppTheme">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.MenuHariIniActivity">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.MenuBeritaActivity">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.MenuKontakActivity">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.NavPendaftaranFormActivity">
-        </activity>
-        <activity android:name="com.qtasnim.qhopes.activities.MenuInfoActivity">
-        </activity>
+        <activity android:name=".activities.LandingActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.MenuHariIniActivity" />
+        <activity android:name=".activities.MenuBeritaActivity" />
+        <activity android:name=".activities.MenuKontakActivity" />
+        <activity android:name=".activities.NavPendaftaranFormActivity" />
+        <activity android:name=".activities.MenuInfoActivity" />
     </application>
 
 </manifest>

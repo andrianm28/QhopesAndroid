@@ -5,7 +5,7 @@
     android:padding="20dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".activities.PilihanPeranActivity">
+    tools:context=".activities.LandingActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"

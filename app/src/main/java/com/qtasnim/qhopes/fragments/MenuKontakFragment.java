@@ -85,7 +85,7 @@ public class MenuKontakFragment extends Fragment {
 
 
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
+                fragmentTransaction.replace(R.id.fl_container,fm);
                 fragmentTransaction.commit();
             }
         });

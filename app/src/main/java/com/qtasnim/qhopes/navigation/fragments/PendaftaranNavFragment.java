@@ -49,7 +49,7 @@ public class PendaftaranNavFragment extends Fragment {
         // Set title bar
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         ((MainActivity) getActivity())
-                .setActionBarTitle(getString(R.string.title_pendaftaran));
+                .setActionBarTitle(getString(R.string.title_daftar));
 
 
         mConfirm = rootView.findViewById(R.id.btn_confirm_pendaftaran);

@@ -90,7 +90,7 @@ public class MenuInfoActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
 
-        RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_info);
+        RecyclerView mRecyclerView = findViewById(R.id.rv_menu_info);
         InfoAdapter recyclerViewAdapter = new InfoAdapter(mModelData);
 
         initData();

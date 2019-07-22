@@ -83,7 +83,7 @@ public class MenuBeritaFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.view_item_menu_berita, container, false);
         View vRV = inflater.inflate(R.layout.fragment_menu_berita,container,false);
 
-        RecyclerView mRecyclerView = vRV.findViewById(R.id.recycler_menu_berita);
+        RecyclerView mRecyclerView = vRV.findViewById(R.id.rv_menu_berita);
         BeritaAdapter recyclerViewAdapter = new BeritaAdapter(mModelData);
         initData();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

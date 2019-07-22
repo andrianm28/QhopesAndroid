@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.qtasnim.qhopes.navigation.fragments.ProfilNavFragment">
 
     <LinearLayout
@@ -11,8 +12,10 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardElevation="2dp"
             android:padding="10dp">
 
             <RelativeLayout
@@ -61,52 +64,65 @@
 
         <!-- TODO: Update blank fragment layout -->
         <androidx.cardview.widget.CardView
+            app:cardElevation="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:orientation="vertical">
+
                 <Button
                     android:id="@+id/btn_bantuan"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Bantuan"
                     android:textAllCaps="false"
-                    android:textAlignment="viewStart"
-                    android:background="@android:color/transparent"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                    android:textAlignment="textStart"
+                    android:textColor="@color/md_grey_700"
+                    app:icon="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
                 <Button
                     android:id="@+id/btn_terms"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ketentuan Layanan"
                     android:textAllCaps="false"
-                    android:textAlignment="viewStart"
-                    android:background="@android:color/transparent"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                    android:textAlignment="textStart"
+                    android:textColor="@color/md_grey_700"
+                    app:icon="@drawable/ic_keyboard_arrow_right_black_24dp"
+
+                    />
 
                 <Button
                     android:id="@+id/btn_saran"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layoutDirection="rtl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Saran"
                     android:textAllCaps="false"
-                    android:textAlignment="viewStart"
-                    android:background="@android:color/transparent"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                    android:textAlignment="textStart"
+                    android:textColor="@color/md_grey_700"
+                    app:icon="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
                 <Button
                     android:id="@+id/btn_keluar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Keluar"
                     android:textAllCaps="false"
                     android:textAlignment="viewStart"
                     android:background="@android:color/transparent"
-                    android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                    android:textColor="@color/md_grey_700" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

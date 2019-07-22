@@ -11,8 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.activities.MainActivity;
@@ -20,21 +20,16 @@ import com.qtasnim.qhopes.activities.MenuBeritaActivity;
 import com.qtasnim.qhopes.activities.MenuHariIniActivity;
 import com.qtasnim.qhopes.activities.MenuInfoActivity;
 import com.qtasnim.qhopes.activities.MenuKontakActivity;
-import com.qtasnim.qhopes.fragments.MenuInfoFragment;
-import com.qtasnim.qhopes.fragments.MingguanFragment;
-import com.qtasnim.qhopes.fragments.SpesialisFragment;
+import com.qtasnim.qhopes.activities.MenuMingguiniActivity;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
 import java.util.Objects;
 
 
-public class HomeNavFragment extends Fragment {
+public class HomeNavFragment extends Fragment implements View.OnClickListener {
 
-    private ImageButton mBtnMenuMingguini,mBtnMenuBerita,mBtnMenuSpesialis,mBtnDaftar,btn_menu_info,btn_day,mBtnMenuKontak;
-    
-    int[] sampleImages = {R.drawable.jp1, R.drawable.jp2, R.drawable.jp3, R.drawable.jp4};
-
+    private int[] sampleImages = {R.drawable.jp1, R.drawable.jp2, R.drawable.jp3, R.drawable.jp4};
     private OnFragmentInteractionListener mListener;
 
     @Override
@@ -48,144 +43,38 @@ public class HomeNavFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_nav_home, container, false);
         setActionBar();
-
-//        TextView mTextMessage = (TextView) rootView.findViewById(R.id.message);
-
 
         CarouselView carousel_view = rootView.findViewById(R.id.carousel_view);
         carousel_view.setPageCount(sampleImages.length);
         carousel_view.setImageListener(imageListener);
 
-        btn_day = rootView.findViewById(R.id.btn_menu_hariini);
-        btn_day_click();
-        mBtnMenuMingguini = rootView.findViewById(R.id.btn_menu_mingguini);
-        mBtnMenuMingguini_click();
-        mBtnMenuBerita = rootView.findViewById(R.id.btn_menu_berita);
-        mBtnMenuBerita_click();
-        btn_menu_info = rootView.findViewById(R.id.btn_menu_info);
-        btnInfoOnClick();
-        mBtnMenuKontak = rootView.findViewById(R.id.btn_menu_kontak);
-        btnMenuKontakClicked();
+        ImageButton btnMenuHariini = rootView.findViewById(R.id.btn_menu_hariini);
+        btnMenuHariini.setOnClickListener(this);
+        ImageButton btnMenuMingguini = rootView.findViewById(R.id.btn_menu_mingguini);
+        btnMenuMingguini.setOnClickListener(this);
+        ImageButton btnMenuSpesialis = rootView.findViewById(R.id.btn_menu_spesialis);
+        btnMenuSpesialis.setOnClickListener(this);
+        ImageButton btnMenuBerita = rootView.findViewById(R.id.btn_menu_berita);
+        btnMenuBerita.setOnClickListener(this);
+        ImageButton btnMenuInfo = rootView.findViewById(R.id.btn_menu_info);
+        btnMenuInfo.setOnClickListener(this);
+        ImageButton btnMenuKontak = rootView.findViewById(R.id.btn_menu_kontak);
+        btnMenuKontak.setOnClickListener(this);
 
         return rootView;
     }
 
 
-
-    public void btn_day_click(){
-        btn_day.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //   Intent i=new Intent(getApplicationContext(), viewinfoday.class);//target = nama class
-                //     startActivity(i);
-
-//                MenuHariIniActivity fm =  new MenuHariIniActivity();
-
-                Intent intent = new Intent(getActivity(), MenuHariIniActivity.class);
-                startActivity(intent);
-
-
-//                 FragmentTransaction fragmentTransaction = getActivity().beginTransaction();
-//                      fragmentTransaction.replace(R.id.frameLayout,fm);
-//                   fragmentTransaction.commit();
-
-            }
-        });
-
-    }
-
-    public void mBtnMenuMingguini_click()
-    {
-        mBtnMenuMingguini.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MingguanFragment fm =  new MingguanFragment();
-
-
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
-            }
-        });
-    }
-
-    public void mBtnMenuBerita_click()
-    {
-        mBtnMenuBerita.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), MenuBeritaActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void mBtnMenuSpesialis_click()
-    {
-        mBtnMenuSpesialis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                SpesialisFragment fm = new SpesialisFragment();
-
-
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
-            }
-        });
-    }
-
-    public void mBtnDaftar_click()
-    {
-        mBtnDaftar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PendaftaranNavFragment fm = new PendaftaranNavFragment();
-
-
-                FragmentTransaction fragmentTransaction = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
-                fragmentTransaction.commit();
-            }
-        });
-    }
-
-
-    public void btnMenuKontakClicked()
-    {
-        mBtnMenuKontak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MenuKontakActivity.class);
-                startActivity(intent);
-
-            }
-        });
-    }
-
-
-    public void btnInfoOnClick()
-    {
-        btn_menu_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MenuInfoFragment fm = new MenuInfoFragment();
-                Intent jumpActivity = new Intent(getContext(), MenuInfoActivity.class);
-                startActivity(jumpActivity);
-
-            }
-        });
-    }
-
-
-    ImageListener imageListener = new ImageListener() {
+    private ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setImageResource(sampleImages[position]);
@@ -203,9 +92,7 @@ public class HomeNavFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
-        }  //  throw new RuntimeException(context.toString()
-        //         + " must implement OnFragmentInteractionListener");
-
+        }
     }
 
     @Override
@@ -214,7 +101,35 @@ public class HomeNavFragment extends Fragment {
         mListener = null;
     }
 
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_menu_hariini:
+                Intent intent1 = new Intent(getActivity(), MenuHariIniActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.btn_menu_mingguini:
+                Intent intent2 = new Intent(getActivity(), MenuMingguiniActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.btn_menu_spesialis:
+                Intent intent3 = new Intent(getActivity(), MenuSpesialisActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.btn_menu_berita:
+                Intent intent4 = new Intent(getActivity(), MenuBeritaActivity.class);
+                startActivity(intent4);
+                break;
+            case R.id.btn_menu_info:
+                Intent intent5 = new Intent(getActivity(), MenuInfoActivity.class);
+                startActivity(intent5);
+                break;
+            case R.id.btn_menu_kontak:
+                Intent intent6 = new Intent(getActivity(), MenuKontakActivity.class);
+                startActivity(intent6);
+                break;
+        }
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

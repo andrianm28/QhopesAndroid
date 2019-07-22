@@ -2,7 +2,6 @@ package com.qtasnim.qhopes.adapters;
 
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -64,25 +63,12 @@ public class ProfilAdapter extends ArrayAdapter<profilpasienmodel> implements Vi
 
         if (convertView == null) {
 
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.profil_datarow, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.name_pasien);
-            viewHolder.txtnorekmed = (TextView) convertView.findViewById(R.id.no_med_rec);
 
-
-            result=convertView;
-
-            convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
             result=convertView;
         }
 
-
-
-        viewHolder.txtName.setText(dataModel.getName());
-        viewHolder.txtnorekmed.setText(dataModel.getno_med_rec());
 
 
         // Return the completed view to render on screen

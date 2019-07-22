@@ -5,7 +5,7 @@
     android:padding="20dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".activities.PilihanPeranActivity">
+    tools:context=".activities.LandingActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             style="@style/InputText"
             android:drawableLeft="@drawable/ic_today_black_24dp"
             android:focusedByDefault="false"
-            android:inputType="text"
+            android:inputType="number"
             android:id="@+id/input_medrek"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
@@ -31,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/colorPrimary"
-        android:text="Login"/>
+        android:text="Submit"
+        android:textAllCaps="false"
+        />
 
 </LinearLayout>

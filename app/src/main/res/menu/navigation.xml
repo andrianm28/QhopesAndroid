@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/navigation_pendaftaran"
-        android:title="@string/title_pendaftaran"
+        android:title="Daftar"
         />
 
     <item

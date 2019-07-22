@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".activities.PilihanPeranActivity">
+    tools:context=".activities.LandingActivity">
     <LinearLayout
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -26,8 +26,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/InputText"
                 android:drawableLeft="@drawable/ic_user"
-                android:focusedByDefault="false"
-                android:inputType="text"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
                 android:id="@+id/input_nip_dokter_form"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -38,24 +38,26 @@
                 style="@style/InputText"
                 android:drawableLeft="@drawable/ic_password"
                 android:focusedByDefault="false"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:id="@+id/input_sandi_dokter_form"/>
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
+            android:id="@+id/tv_register_dokter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_gravity="end"
             android:text="Buat Akun Baru"
-            android:textColor="@color/md_blue_800"
+            android:textColor="@color/md_blue_900"
             />
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btn_login_dokter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:text="Login"
+            android:textAllCaps="false"
             android:textColor="@color/md_white_1000"
             android:textStyle="bold"/>
 

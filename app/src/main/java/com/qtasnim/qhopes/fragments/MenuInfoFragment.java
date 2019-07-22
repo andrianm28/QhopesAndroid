@@ -73,7 +73,7 @@ public class MenuInfoFragment extends Fragment {
             public void onClick(View v) {
                 PendaftaranNavFragment fm = new PendaftaranNavFragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout,fm);
+                fragmentTransaction.replace(R.id.fl_container,fm);
                 fragmentTransaction.commit();
             }
         });

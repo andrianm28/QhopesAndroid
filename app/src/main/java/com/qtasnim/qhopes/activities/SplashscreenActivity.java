@@ -24,7 +24,7 @@ public class SplashscreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent jumpActivity = new Intent(SplashscreenActivity.this, PilihanPeranActivity.class);
+                Intent jumpActivity = new Intent(SplashscreenActivity.this, LandingActivity.class);
                 startActivity(jumpActivity);
                 finish();
             }

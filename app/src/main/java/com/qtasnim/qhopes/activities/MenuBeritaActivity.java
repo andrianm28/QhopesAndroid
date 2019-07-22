@@ -90,7 +90,7 @@ public class MenuBeritaActivity extends AppCompatActivity {
 
     private void setRecyclerView() {
 
-        RecyclerView mRecyclerView = findViewById(R.id.recycler_menu_berita);
+        RecyclerView mRecyclerView = findViewById(R.id.rv_menu_berita);
         BeritaAdapter recyclerViewAdapter = new BeritaAdapter(mModelData);
 
         initData();

@@ -38,30 +38,39 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     HomeNavFragment fm1 =  new HomeNavFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction1.replace(R.id.frameLayout,fm1 );
+                    fragmentTransaction1.replace(R.id.fl_container,fm1 );
+                    fragmentTransaction1.addToBackStack(null);
                     fragmentTransaction1.commit();
                     return true;
                 case R.id.navigation_appointment:
                     AppointmentNavFragment fm2 =  new AppointmentNavFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction2.replace(R.id.frameLayout,fm2 );
+                    fragmentTransaction2.replace(R.id.fl_container,fm2 );
+                    fragmentTransaction2.addToBackStack(null);
                     fragmentTransaction2.commit();
                     return  true;
                 case R.id.navigation_diagnosis:
                     DiagnosisNavFragment fm3 =  new DiagnosisNavFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction3.replace(R.id.frameLayout,fm3 );
+                    fragmentTransaction3.replace(R.id.fl_container,fm3 );
+                    fragmentTransaction3.addToBackStack(null);
                     fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_profil:
                     ProfilNavFragment fm4 =  new ProfilNavFragment();
                     FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction4.replace(R.id.frameLayout,fm4 );
+                    fragmentTransaction4.replace(R.id.fl_container,fm4 );
+                    fragmentTransaction4.addToBackStack(null);
                     fragmentTransaction4.commit();
+                    return true;
+                case R.id.navigation_pendaftaran:
+                    Intent intent = new Intent(MainActivity.this, NavPendaftaranFormActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initData();
-        fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab_daftar);
         fabOnClick();
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         HomeNavFragment fm =  new HomeNavFragment();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout,fm );
+        fragmentTransaction.replace(R.id.fl_container,fm );
         fragmentTransaction.commit();
     }
     private void initData() {
@@ -119,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                         });
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+        alert.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+        alert.getButton(AlertDialog.BUTTON_NEGATIVE).setAllCaps(false);
     }
 
     public void fabOnClick() {
