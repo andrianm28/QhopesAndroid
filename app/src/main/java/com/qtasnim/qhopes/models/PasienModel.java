@@ -1,18 +1,13 @@
 package com.qtasnim.qhopes.models;
 
-public class AkunModel {
-    String username, useremail, userphone;
+public class PasienModel {
+    String username, useremail, userphone, medrec;
 
-    public AkunModel (
-            String username,
-            String useremail,
-            String userphone
-
-    ){
+    public PasienModel(String username, String useremail, String userphone, String medrec) {
         this.username = username;
         this.useremail = useremail;
         this.userphone = userphone;
-
+        this.medrec = medrec;
     }
 
     public String getUsername() {
@@ -37,5 +32,13 @@ public class AkunModel {
 
     public void setUserphone(String userphone) {
         this.userphone = userphone;
+    }
+
+    public String getMedrek() {
+        return medrec;
+    }
+
+    public void setMedrek(String medrec) {
+        this.medrec = medrec;
     }
 }

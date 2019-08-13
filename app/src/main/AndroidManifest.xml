@@ -9,27 +9,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.RegisterDokterActivity"></activity>
-        <activity android:name=".navigation.fragments.MenuSpesialisActivity" />
-        <activity android:name=".activities.MenuMingguiniActivity" />
+        <activity android:name=".activities.RegisterDokterActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".navigation.fragments.MenuSpesialisActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.MenuMingguiniActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashscreenActivity"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LandingActivity" />
+        <activity android:name=".activities.LandingActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activities.MenuHariIniActivity" />
-        <activity android:name=".activities.MenuBeritaActivity" />
-        <activity android:name=".activities.MenuKontakActivity" />
-        <activity android:name=".activities.NavPendaftaranFormActivity" />
-        <activity android:name=".activities.MenuInfoActivity" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.MenuHariIniActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.MenuBeritaActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.MenuKontakActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.NavPendaftaranFormActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.MenuInfoActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

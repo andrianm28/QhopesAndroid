@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.adapters.BeritaAdapter;
 import com.qtasnim.qhopes.models.BeritaModel;
-import com.qtasnim.qhopes.models.OtentifikasiModel;
+import com.qtasnim.qhopes.models.DokterModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.Objects;
 public class NavPendaftaranFormActivity extends AppCompatActivity {
 
     private ArrayList<BeritaModel> mModelData = new ArrayList<>();
-    private OtentifikasiModel otentifikasiModel;
+    private DokterModel dokterModel;
     Dialog dialog;
     AlertDialog alertDialog;
 

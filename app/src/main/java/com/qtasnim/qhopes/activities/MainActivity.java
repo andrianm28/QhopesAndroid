@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.misc.BottomNavigationViewHelper;
-import com.qtasnim.qhopes.models.OtentifikasiModel;
+import com.qtasnim.qhopes.models.DokterModel;
 import com.qtasnim.qhopes.navigation.fragments.AppointmentNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.DiagnosisNavFragment;
 import com.qtasnim.qhopes.navigation.fragments.HomeNavFragment;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
 
-    private ArrayList<OtentifikasiModel> mModelData = new ArrayList<>();
+    private ArrayList<DokterModel> mModelData = new ArrayList<>();
     FloatingActionButton fab;
     Dialog dialog;
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
     private void initData() {
-        mModelData.add(new OtentifikasiModel(12345,12345));
+        mModelData.add(new DokterModel("yana","12345", 123, 123));
     }
 
     @Override

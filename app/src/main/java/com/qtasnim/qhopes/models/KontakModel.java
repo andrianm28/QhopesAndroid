@@ -2,12 +2,12 @@ package com.qtasnim.qhopes.models;
 
 public class KontakModel {
 
-    String title, alamat, email, nomor1, nomor2;
+    String judul, alamat, email, nomor1, nomor2;
 
 
 
-    public KontakModel(String title, String alamat, String email, String nomor1, String nomor2){
-        this.title = title;
+    public KontakModel(String judul, String alamat, String email, String nomor1, String nomor2){
+        this.judul = judul;
         this.alamat = alamat;
         this.email = email;
         this.nomor1 = nomor1;
@@ -16,11 +16,11 @@ public class KontakModel {
     }
 
     public String getTitle() {
-        return title;
+        return judul;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String judul) {
+        this.judul = judul;
     }
 
     public String getAlamat() {

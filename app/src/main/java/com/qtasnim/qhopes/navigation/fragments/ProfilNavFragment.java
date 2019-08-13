@@ -20,7 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.qtasnim.qhopes.R;
 import com.qtasnim.qhopes.activities.MainActivity;
 import com.qtasnim.qhopes.adapters.ProfilAdapter;
-import com.qtasnim.qhopes.models.AkunModel;
+import com.qtasnim.qhopes.models.PasienModel;
 import com.qtasnim.qhopes.models.profilpasienmodel;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class ProfilNavFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ArrayList<AkunModel> mAkunModel = new ArrayList<AkunModel>();
+    ArrayList<PasienModel> mAkunModel = new ArrayList<PasienModel>();
     ArrayList<profilpasienmodel> mMenuHariinisData;
     ListView lv;
     private static ProfilAdapter adapter;
@@ -117,7 +117,7 @@ public class ProfilNavFragment extends Fragment {
     }
 
     private void initData(){
-        mAkunModel.add(new AkunModel("andrianm28","andrianmaulana28@gmail.com","082278911288"));
+        mAkunModel.add(new PasienModel("andrianm28","andrianmaulana28@gmail.com","082278911288", "12345"));
     }
 
     @Override
